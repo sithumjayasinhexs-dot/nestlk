@@ -61,8 +61,11 @@
     font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px;letter-spacing:.4px}
   .ph .feat{position:absolute;top:10px;right:10px;background:var(--amber);color:#3a2a00;
     font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px}
-  .ph .photos{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;
-    font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px}
+  .ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .dgal img#dmain{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--r);display:block;background:#eef4f3}
+  .dthumbs{display:flex;gap:8px;margin-top:8px}
+  .dthumbs img{width:72px;height:54px;object-fit:cover;border-radius:8px;cursor:pointer;opacity:.55;border:2px solid transparent}
+  .dthumbs img.on{opacity:1;border-color:var(--teal)}
   .fav{position:absolute;bottom:10px;left:10px;width:36px;height:36px;border-radius:50%;
     background:rgba(255,255,255,.94);border:0;font-size:17px;cursor:pointer;display:flex;
     align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.2)}
@@ -358,8 +361,17 @@ function saveMyAds(){ try{ localStorage.setItem('nestlkMyAds', JSON.stringify(my
 const $ = id => document.getElementById(id);
 const fmtRs = n => 'Rs. ' + n.toLocaleString('en-LK');
 const ago = d => d===0?'today':d===1?'yesterday':d+' days ago';
-const grad = id => GRAD[id % GRAD.length];
-const emo = id => EMOJI[id % EMOJI.length];
+const hcode = s => { let h=0; for (const c of String(s)) h=(h*31 + c.charCodeAt(0))|0; return Math.abs(h); };
+const grad = id => GRAD[hcode(id) % GRAD.length];
+const emo = id => EMOJI[hcode(id) % EMOJI.length];
+const hasPh = l => !!(l.photos && l.photos.length);
+function galHTML(l, cls){
+  if(!hasPh(l)) return '';
+  const thumbs = l.photos.length>1
+    ? `<div class="dthumbs">${l.photos.map((p,i)=>`<img src="${p}" class="${i===0?'on':''}" onclick="dswap(this,'${p}')" loading="lazy">`).join('')}</div>` : '';
+  return `<div class="${cls}"><img id="dmain" src="${l.photos[0]}" alt="">${thumbs}</div>`;
+}
+function dswap(el, src){ $('dmain').src = src; el.parentNode.querySelectorAll('img').forEach(i=>i.classList.remove('on')); el.classList.add('on'); }
 function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
 function toggleFav(id, ev){ ev.stopPropagation(); favs.has(id)?favs.delete(id):favs.add(id); saveFavs(); renderAll(); toast(favs.has(id)?'❤️ Saved':'Removed from saved'); }
 
@@ -378,14 +390,11 @@ function go(v){
 
 /* ================= cards ================= */
 function cardHTML(l){
-  return `<div class="card" onclick="openDetail(${l.id})">
-    <div class="ph" style="background:${grad(l.id)}">
-      <span>${emo(l.id)}</span>
-      <span class="tag">${l.gender}</span>
-      ${l.featured?'<span class="feat">⭐ Featured</span>':''}
-      <button class="fav ${favs.has(l.id)?'on':''}" onclick="toggleFav(${l.id},event)">${favs.has(l.id)?'❤️':'🤍'}</button>
-      <span class="photos">📷 4</span>
-    </div>
+  const phInner = hasPh(l)
+    ? `<img src="${l.photos[0]}" alt="" loading="lazy"><span class="tag">${l.gender}</span>${l.featured?'<span class="feat">⭐ Featured</span>':''}<button class="fav ${favs.has(l.id)?'on':''}" onclick="toggleFav('${l.id}',event)">${favs.has(l.id)?'❤️':'🤍'}</button><span class="photos">📷 ${l.photos.length}</span>`
+    : `<span>${emo(l.id)}</span><span class="tag">${l.gender}</span>${l.featured?'<span class="feat">⭐ Featured</span>':''}<button class="fav ${favs.has(l.id)?'on':''}" onclick="toggleFav('${l.id}',event)">${favs.has(l.id)?'❤️':'🤍'}</button>`;
+  return `<div class="card" onclick="openDetail('${l.id}')">
+    <div class="ph"${hasPh(l)?'':' style="background:'+grad(l.id)+'"'}>${phInner}</div>
     <div class="cbody">
       <div class="price">${fmtRs(l.price)} <small>/ month</small></div>
       <div class="ctitle">${l.title}</div>
@@ -473,9 +482,11 @@ function renderBrowse(){
 function openDetail(id){
   const l = LISTINGS.find(x=>x.id===id); if(!l) return;
   const wa = 'https://wa.me/'+l.phone+'?text='+encodeURIComponent('Hi! I saw your "'+l.title+'" on NestLK ('+fmtRs(l.price)+'/month). Is it still available?');
+  const dph = hasPh(l) ? galHTML(l,'dgal')
+    : '<div class="dph" style="background:'+grad(l.id)+'"><span>'+emo(l.id)+'</span></div>';
   $('detailBody').innerHTML =
     '<div class="dgrid">'+
-      '<div class="dph" style="background:'+grad(l.id)+'"><span>'+emo(l.id)+'</span><span class="photos">📷 4 photos</span></div>'+
+      dph+
       '<div class="dinfo">'+
         '<div class="pills"><span class="pill">'+l.type+'</span><span class="pill g">'+l.gender+'</span>'+(l.featured?'<span class="pill g">⭐ Featured</span>':'')+'</div>'+
         '<h2>'+l.title+'</h2>'+
@@ -485,7 +496,7 @@ function openDetail(id){
         '<div class="contact">'+
           '<a class="btn wa" href="'+wa+'" target="_blank" rel="noopener">💬 WhatsApp</a>'+
           '<a class="btn teal" href="tel:+'+l.phone+'">📞 Call</a>'+
-          '<button class="btn ghost" onclick="toggleFav('+l.id+',event)">'+(favs.has(l.id)?'❤️ Saved':'🤍 Save')+'</button>'+
+          '<button class="btn ghost" onclick="toggleFav(\''+l.id+'\',event)">'+(favs.has(l.id)?'❤️ Saved':'🤍 Save')+'</button>'+
         '</div>'+
         '<p style="font-size:12px;color:var(--mut);margin-top:12px">🛡️ Safety tip: always visit the place before paying any advance.</p>'+
       '</div>'+
