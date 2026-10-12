@@ -47,4 +47,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "rentals refresh"
-          file_pattern: "listings.json scraper/listings.json"
+          file_pattern: "listings.json scraper/listings.json photos/**"
