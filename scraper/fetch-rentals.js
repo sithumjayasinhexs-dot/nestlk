@@ -5,6 +5,12 @@
  * Run:  npm install && npx playwright install chromium && node fetch-rentals.js
  * The site is client-rendered, so a headless browser is required (no login needed).
  *
+ * Photos: for every NEW listing the script visits the ad page, grabs up to 3
+ * gallery images and stores them under ../photos/<id>-<n>.jpg (repo root photos/
+ * when run from scraper/). listings.json references them as "photos":
+ * ["photos/<id>-1.jpg", ...]. The web app renders them; listings without photos
+ * keep the gradient placeholder. Old photos whose listings aged out are pruned.
+ *
  * Schedule it (example cron, twice daily):
  *   0 7,19 * * * cd /path/to/scraper && node fetch-rentals.js >> fetch.log 2>&1
  * Then copy listings.json next to the hosted nestlk.html (or push via the
@@ -59,6 +65,59 @@ const priceNum = s => {
   const m = String(s || '').replace(/,/g, '').match(/(\d[\d]*)/);
   return m ? parseInt(m[1], 10) : 0;
 };
+
+/* ---------- photo helpers (same idea as UniPulse posters) ---------- */
+const PHOTO_DIR = path.join(__dirname, '..', 'photos');
+const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
+
+function dlFile(url, dest) {
+  return new Promise(resolve => {
+    const mod = url.startsWith('https') ? require('https') : require('http');
+    const req = mod.get(url, { headers: { 'User-Agent': UA, 'Referer': 'https://ikman.lk/' } }, res => {
+      const ct = res.headers['content-type'] || '';
+      if (res.statusCode !== 200 || !ct.startsWith('image')) { res.resume(); return resolve(false); }
+      const ws = fs.createWriteStream(dest);
+      res.pipe(ws);
+      ws.on('finish', () => { ws.close(); try { resolve(fs.statSync(dest).size > 2000); } catch (e) { resolve(false); } });
+      ws.on('error', () => resolve(false));
+    });
+    req.on('error', () => resolve(false));
+    req.setTimeout(25000, () => { req.destroy(); resolve(false); });
+  });
+}
+
+async function fetchPhotos(browser, adUrl, id) {
+  const photos = [];
+  let ap = null;
+  try {
+    ap = await browser.newPage({ userAgent: UA });
+    await ap.goto(adUrl, { waitUntil: 'domcontentloaded', timeout: 40000 });
+    await ap.waitForTimeout(2500);
+    const imgs = await ap.$$eval('img', els =>
+      els.map(i => i.currentSrc || i.src).filter(Boolean)
+    );
+    const seenU = new Set(), cands = [];
+    for (const u of imgs) {
+      if (!u.startsWith('http') || seenU.has(u)) continue;
+      seenU.add(u);
+      const low = u.toLowerCase();
+      if (u.startsWith('data:') || low.endsWith('.svg') || low.includes('logo')
+        || low.includes('sprite') || low.includes('icon') || low.includes('avatar')
+        || low.includes('placeholder') || low.includes('banner')) continue;
+      cands.push(u);
+    }
+    console.log(`  gallery imgs: ${cands.length} @ ${id}`);
+    for (let n = 0; n < Math.min(3, cands.length); n++) {
+      const dest = path.join(PHOTO_DIR, `${id}-${n + 1}.jpg`);
+      if (await dlFile(cands[n], dest)) photos.push(`photos/${id}-${n + 1}.jpg`);
+      else { try { fs.unlinkSync(dest); } catch (e) {} }
+    }
+  } catch (e) {
+    console.log('  photo fail', id, '-', String(e.message || e).split('\n')[0]);
+  }
+  if (ap) await ap.close().catch(() => {});
+  return photos;
+}
 
 (async () => {
   // respect proxy env (e.g. sandboxed CI runners) — curl reads it automatically,
@@ -120,15 +179,34 @@ const priceNum = s => {
       }
     } catch (e) { console.log('  !! failed:', e.message.split('\n')[0]); }
   }
-  await browser.close();
-
   // merge with existing listings.json, dedupe by id
   const fp = path.join(__dirname, 'listings.json');
   let existing = [];
   try { existing = JSON.parse(fs.readFileSync(fp, 'utf8')); } catch (e) {}
   const have = new Set(existing.map(l => l.id));
   const fresh = out.filter(l => !have.has(l.id));
+
+  // real photos for new listings only (existing ones keep theirs)
+  fs.mkdirSync(PHOTO_DIR, { recursive: true });
+  for (const l of fresh) {
+    l.photos = await fetchPhotos(browser, l.url, l.id);
+    l.desc = l.photos.length
+      ? 'Imported from ikman.lk — photos shown; open the original ad for contact and full details.'
+      : 'Imported from ikman.lk — open the original ad for photos, contact and full details.';
+    await new Promise(r => setTimeout(r, 600)); // be gentle with ikman
+  }
+  await browser.close();
+
   const merged = [...fresh, ...existing].slice(0, 400); // cap file size
   fs.writeFileSync(fp, JSON.stringify(merged, null, 1));
+
+  // prune photos whose listings aged out (bounds repo storage)
+  try {
+    const keep = new Set(merged.map(l => l.id));
+    for (const f of fs.readdirSync(PHOTO_DIR)) {
+      const m = f.match(/^(.+)-[0-9]+\.jpg$/);
+      if (m && !keep.has(m[1])) fs.unlinkSync(path.join(PHOTO_DIR, f));
+    }
+  } catch (e) {}
   console.log(`done: ${fresh.length} new, ${merged.length} total → listings.json`);
 })();
