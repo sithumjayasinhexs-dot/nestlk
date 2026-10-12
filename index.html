@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>NestLK — Student rentals near every campus</title>
+<style>
+  :root{
+    --teal:#0f766e; --teal-d:#0d5f59; --amber:#f59e0b; --amber-d:#d97706;
+    --ink:#1e293b; --mut:#64748b; --line:#e2e8f0; --bg:#f6f8f7; --card:#ffffff;
+    --r:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.55;padding-bottom:86px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 16px}
+  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .hbar{display:flex;align-items:center;gap:12px;padding:12px 0}
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.5px}
+  .logo b{color:var(--teal)}
+  .logo span{color:var(--amber-d)}
+  .loc{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;
+    color:var(--teal-d);background:#e6f4f2;padding:8px 14px;border-radius:999px;cursor:pointer}
+  .hero{background:linear-gradient(135deg,var(--teal-d),var(--teal) 60%,#14a396);
+    color:#fff;border-radius:0 0 28px 28px;padding:34px 0 30px;margin-bottom:20px}
+  .hero h1{font-size:clamp(24px,4.5vw,36px);letter-spacing:-.5px;line-height:1.2}
+  .hero p{opacity:.88;margin:8px 0 18px;font-size:15px}
+  .searchbar{background:#fff;border-radius:18px;padding:10px;display:grid;gap:8px;
+    grid-template-columns:1fr 1fr auto;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+  .searchbar input,.searchbar select{border:1.5px solid var(--line);border-radius:12px;
+    padding:12px;font-size:14px;width:100%;outline:none;background:#fff;color:var(--ink)}
+  .searchbar input:focus,.searchbar select:focus{border-color:var(--teal)}
+  .btn{background:var(--amber);color:#3a2a00;border:0;border-radius:12px;padding:12px 22px;
+    font-weight:800;font-size:15px;cursor:pointer;transition:.2s;white-space:nowrap}
+  .btn:hover{background:var(--amber-d);color:#fff}
+  .btn.teal{background:var(--teal);color:#fff}
+  .btn.teal:hover{background:var(--teal-d)}
+  .btn.ghost{background:#eef2f1;color:var(--ink)}
+  @media(max-width:640px){.searchbar{grid-template-columns:1fr}.searchbar .btn{width:100%}}
+  .uchips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}
+  .uchips::-webkit-scrollbar{display:none}
+  .uchip{flex:0 0 auto;border:1.5px solid var(--line);background:#fff;border-radius:999px;
+    padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;color:var(--ink)}
+  .uchip:hover{border-color:var(--teal);color:var(--teal-d)}
+  .uchip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+  .sec{margin:26px 0}
+  .sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .sec-head h2{font-size:20px;letter-spacing:-.3px}
+  .sec-head a{margin-left:auto;font-size:13px;font-weight:700;color:var(--teal-d);cursor:pointer}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    overflow:hidden;cursor:pointer;transition:.22s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,118,110,.12)}
+  .ph{aspect-ratio:16/10;position:relative;display:flex;align-items:center;justify-content:center;
+    font-size:52px;overflow:hidden}
+  .ph .tag{position:absolute;top:10px;left:10px;background:rgba(15,118,110,.92);color:#fff;
+    font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px;letter-spacing:.4px}
+  .ph .feat{position:absolute;top:10px;right:10px;background:var(--amber);color:#3a2a00;
+    font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px}
+  .ph .photos{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;
+    font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px}
+  .fav{position:absolute;bottom:10px;left:10px;width:36px;height:36px;border-radius:50%;
+    background:rgba(255,255,255,.94);border:0;font-size:17px;cursor:pointer;display:flex;
+    align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+  .fav.on{color:#e11d48}
+  .cbody{padding:14px 15px 16px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .price{font-size:19px;font-weight:800;color:var(--teal-d)}
+  .price small{font-size:12px;font-weight:600;color:var(--mut)}
+  .ctitle{font-weight:700;font-size:15px;line-height:1.35}
+  .cmeta{font-size:12.5px;color:var(--mut);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+  .pill{font-size:11px;font-weight:700;background:#eef4f3;color:var(--teal-d);
+    padding:4px 10px;border-radius:999px}
+  .pill.g{background:#fdf3e3;color:#92400e}
+  .filters{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;
+    display:grid;gap:12px;margin-bottom:18px}
+  .frow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .frow label{font-size:12px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:.6px}
+  .frow select,.frow input[type=text]{border:1.5px solid var(--line);border-radius:10px;
+    padding:10px 12px;font-size:14px;outline:none;background:#fff;color:var(--ink)}
+  .frow select:focus,.frow input[type=text]:focus{border-color:var(--teal)}
+  .fchip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;
+    font-size:13px;font-weight:700;cursor:pointer;color:var(--ink)}
+  .fchip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  input[type=range]{accent-color:var(--teal);width:180px}
+  .count{font-size:13px;color:var(--mut);font-weight:600}
+  .empty{text-align:center;padding:60px 20px;color:var(--mut)}
+  .empty .big{font-size:48px;margin-bottom:10px}
+  .back{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--teal-d);
+    cursor:pointer;margin:16px 0;font-size:14px}
+  .dgrid{display:grid;grid-template-columns:1.15fr 1fr;gap:20px}
+  @media(max-width:800px){.dgrid{grid-template-columns:1fr}}
+  .dph{border-radius:var(--r);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;
+    font-size:84px;position:relative;overflow:hidden}
+  .dph .photos{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.55);color:#fff;
+    font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px}
+  .dinfo{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+  .dinfo h2{font-size:22px;letter-spacing:-.3px;margin:6px 0}
+  .dprice{font-size:26px;font-weight:800;color:var(--teal-d);margin:8px 0}
+  .dprice small{font-size:13px;color:var(--mut);font-weight:600}
+  .drow{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+  .drow b{min-width:110px;color:var(--mut);font-weight:700}
+  .facs{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .fac{background:#eef4f3;color:var(--teal-d);font-size:13px;font-weight:700;
+    padding:7px 14px;border-radius:999px}
+  .contact{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+  .contact .btn{flex:1;text-align:center;text-decoration:none;display:inline-block}
+  .wa{background:#1faa55;color:#fff}
+  .wa:hover{background:#178a44}
+  .desc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;margin-top:20px}
+  .desc h3{margin-bottom:10px;font-size:17px}
+  .desc p{color:#3b4a5e;font-size:14.5px}
+  .steps{display:flex;gap:8px;margin:18px 0}
+  .step{flex:1;text-align:center;font-size:12px;font-weight:800;color:var(--mut);
+    padding:10px 4px;border-radius:10px;background:#fff;border:1px solid var(--line)}
+  .step.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .form{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;
+    display:grid;gap:14px;max-width:640px}
+  .form label{font-size:13px;font-weight:800;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+  .form input[type=text],.form input[type=tel],.form input[type=number],.form select,.form textarea{
+    border:1.5px solid var(--line);border-radius:10px;padding:12px;font-size:15px;width:100%;
+    outline:none;font-family:inherit;color:var(--ink);background:#fff}
+  .form input:focus,.form select:focus,.form textarea:focus{border-color:var(--teal)}
+  .form textarea{min-height:96px;resize:vertical}
+  .frow2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.frow2{grid-template-columns:1fr}}
+  .checkgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .check{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:10px;
+    padding:10px 12px;font-size:14px;font-weight:600;cursor:pointer}
+  .check input{accent-color:var(--teal);width:17px;height:17px}
+  .nav2{display:flex;gap:10px;justify-content:space-between;margin-top:4px}
+  nav.tab{position:fixed;bottom:0;left:0;right:0;z-index:50;background:#fff;
+    border-top:1px solid var(--line);display:flex;padding:8px 4px calc(8px + env(safe-area-inset-bottom))}
+  nav.tab button{flex:1;background:none;border:0;font-size:11px;font-weight:700;color:var(--mut);
+    cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px}
+  nav.tab button .ic{font-size:21px}
+  nav.tab button.on{color:var(--teal-d)}
+  nav.tab button.post .ic{background:var(--amber);color:#3a2a00;width:46px;height:30px;border-radius:999px;
+    display:flex;align-items:center;justify-content:center;font-size:18px}
+  .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:#fff;padding:13px 22px;border-radius:999px;font-size:14px;
+    font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:99;white-space:nowrap}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .view{display:none}.view.on{display:block;animation:fade .25s}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+  .how{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  @media(max-width:700px){.how{grid-template-columns:1fr}}
+  .how div{text-align:center}
+  .how .e{font-size:34px;margin-bottom:8px}
+  .how b{display:block;margin-bottom:4px}
+  .how p{font-size:13px;color:var(--mut)}
+  #map{height:calc(100vh - 230px);min-height:420px;border-radius:16px;
+    border:1px solid var(--line);z-index:1;background:#dde7e5}
+  .map-note{font-size:12.5px;color:var(--mut);margin:10px 2px}
+  .map-pop b{color:var(--teal-d)}
+  .map-pop button{background:var(--teal);color:#fff;border:0;border-radius:8px;
+    padding:6px 14px;font-weight:700;cursor:pointer;margin-top:6px;font-size:13px}
+  .map-fallback{text-align:center;padding:70px 20px;color:var(--mut)}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<header>
+  <div class="wrap hbar">
+    <div class="logo"><b>nest</b><span>lk</span></div>
+    <div class="loc" onclick="go('browse')">📍 <span id="locLabel">All campuses</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="view on" id="v-home">
+    <div class="hero" style="margin:0 -16px 20px;padding-left:16px;padding-right:16px">
+      <div class="wrap">
+        <h1>Find your nest near campus.</h1>
+        <p>Rooms, annexes &amp; boarding houses around Sri Lanka's universities — direct from owners, no brokers.</p>
+        <div class="searchbar">
+          <select id="hq-uni"><option value="">All universities</option></select>
+          <select id="hq-budget">
+            <option value="">Any budget</option>
+            <option value="15000">Under Rs. 15,000</option>
+            <option value="25000">Under Rs. 25,000</option>
+            <option value="40000">Under Rs. 40,000</option>
+          </select>
+          <button class="btn" onclick="homeSearch()">Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="uchips" id="uniChips"></div>
+    <div class="sec">
+      <div class="sec-head"><h2>⭐ Featured near you</h2><a onclick="go('browse')">See all →</a></div>
+      <div class="grid" id="featGrid"></div>
+    </div>
+    <div class="sec">
+      <div class="sec-head"><h2>How it works</h2></div>
+      <div class="how">
+        <div><div class="e">🔍</div><b>Search by campus</b><p>Pick your university — see only places students actually rent nearby.</p></div>
+        <div><div class="e">💬</div><b>Contact direct</b><p>Call or WhatsApp the owner. No broker fees, no middlemen.</p></div>
+        <div><div class="e">📢</div><b>List for free</b><p>Got a spare room or annex? Post it in 2 minutes, reach thousands of students.</p></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-head"><h2>🕒 Fresh listings</h2><a onclick="go('browse')">See all →</a></div>
+      <div class="grid" id="freshGrid"></div>
+    </div>
+  </div>
+
+  <div class="view" id="v-browse">
+    <div class="sec">
+      <div class="sec-head"><h2>Browse places</h2><span class="count" id="resCount"></span></div>
+      <div class="filters">
+        <div class="frow">
+          <input type="text" id="fq" placeholder="Search title, area…" style="flex:1;min-width:160px">
+          <select id="funi"><option value="">All universities</option></select>
+        </div>
+        <div class="frow">
+          <label>Max Rs. <span id="pval">50,000</span></label>
+          <input type="range" id="fprice" min="10000" max="60000" step="5000" value="60000">
+        </div>
+        <div class="frow" id="typeChips"></div>
+        <div class="frow" id="genderChips"></div>
+        <div class="frow" id="facChips"></div>
+      </div>
+      <div class="grid" id="browseGrid"></div>
+      <div class="empty" id="browseEmpty" style="display:none">
+        <div class="big">🏚️</div><h3>No places match</h3><p>Try widening the budget or clearing a filter.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="view" id="v-map">
+    <div class="sec">
+      <div class="sec-head"><h2>🗺️ Places on the map</h2><span class="count" id="mapCount"></span></div>
+      <div id="map"></div>
+      <p class="map-note">Pins follow your current Search filters — filter the list, then check the map. Tap a pin for price &amp; details.</p>
+      <div class="map-fallback" id="mapFallback" style="display:none">
+        <div class="big" style="font-size:48px">🛰️</div>
+        <h3>Map needs internet</h3><p>Connect to load the Sri Lanka map tiles.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="view" id="v-detail">
+    <a class="back" onclick="go('browse')">← Back to results</a>
+    <div id="detailBody"></div>
+  </div>
+
+  <div class="view" id="v-post">
+    <div class="sec">
+      <div class="sec-head"><h2>📢 Post your place</h2></div>
+      <p style="color:var(--mut);font-size:14px;margin-bottom:6px">Free listing · reaches students at all 8 campuses · takes ~2 minutes</p>
+      <div class="steps">
+        <div class="step on" id="st1">1 · Basics</div>
+        <div class="step" id="st2">2 · Details</div>
+        <div class="step" id="st3">3 · Contact</div>
+      </div>
+      <div class="form" id="step1">
+        <div><label>Title</label><input type="text" id="p-title" placeholder="e.g. Sunny single room near Moratuwa campus"></div>
+        <div class="frow2">
+          <div><label>University</label><select id="p-uni"></select></div>
+          <div><label>Area / City</label><input type="text" id="p-city" placeholder="e.g. Moratuwa"></div>
+        </div>
+        <div class="frow2">
+          <div><label>Monthly rent (Rs.)</label><input type="number" id="p-price" placeholder="22000"></div>
+          <div><label>Room type</label><select id="p-type"></select></div>
+        </div>
+        <div><label>For</label><select id="p-gender"><option>Boys</option><option>Girls</option><option>Any</option></select></div>
+        <div class="nav2"><span></span><button class="btn teal" onclick="postStep(2)">Next →</button></div>
+      </div>
+      <div class="form" id="step2" style="display:none">
+        <div><label>Distance to campus</label><input type="text" id="p-dist" placeholder="e.g. 5 min walk"></div>
+        <div><label>Description</label><textarea id="p-desc" placeholder="Describe the room, house rules, what's nearby…"></textarea></div>
+        <div><label>Facilities</label><div class="checkgrid" id="p-facs"></div></div>
+        <div class="nav2"><button class="btn ghost" onclick="postStep(1)">← Back</button><button class="btn teal" onclick="postStep(3)">Next →</button></div>
+      </div>
+      <div class="form" id="step3" style="display:none">
+        <div><label>Your name</label><input type="text" id="p-name" placeholder="e.g. Mrs. Perera"></div>
+        <div><label>Phone / WhatsApp</label><input type="tel" id="p-phone" placeholder="0771234567"></div>
+        <div class="nav2"><button class="btn ghost" onclick="postStep(2)">← Back</button><button class="btn" onclick="publishAd()">🚀 Publish ad</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view" id="v-saved">
+    <div class="sec">
+      <div class="sec-head"><h2>❤️ Saved places</h2></div>
+      <div class="grid" id="savedGrid"></div>
+      <div class="empty" id="savedEmpty" style="display:none">
+        <div class="big">🤍</div><h3>Nothing saved yet</h3><p>Tap the heart on any listing to keep it here.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<nav class="tab">
+  <button class="on" data-v="home" onclick="go('home')"><span class="ic">🏠</span>Home</button>
+  <button data-v="browse" onclick="go('browse')"><span class="ic">🔍</span>Search</button>
+  <button data-v="map" onclick="go('map')"><span class="ic">🗺️</span>Map</button>
+  <button data-v="post" class="post" onclick="go('post')"><span class="ic">＋</span>Post ad</button>
+  <button data-v="saved" onclick="go('saved')"><span class="ic">❤️</span>Saved</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+<script>
+/* ================= data ================= */
+const UNIS = [
+  {name:'University of Moratuwa', city:'Moratuwa'},
+  {name:'University of Colombo', city:'Colombo 03'},
+  {name:'University of Peradeniya', city:'Peradeniya'},
+  {name:'Univ. of Sri Jayewardenepura', city:'Nugegoda'},
+  {name:'University of Kelaniya', city:'Kelaniya'},
+  {name:'University of Jaffna', city:'Jaffna'},
+  {name:'University of Ruhuna', city:'Galle'},
+  {name:'Wayamba University', city:'Kuliyapitiya'},
+];
+const TYPES = ['Single room','Double sharing','Triple sharing','Annex','Boarding house'];
+const GENDERS = ['Boys','Girls','Any'];
+const FACS = ['WiFi','Meals','Attached bathroom','A/C','Parking','Hot water','Study table','CCTV'];
+const EMOJI = ['🛏️','🏠','🏡','🪟','🌿','☀️','🌙','🧱'];
+const GRAD = [
+  'linear-gradient(135deg,#5eead4,#0f766e)','linear-gradient(135deg,#fcd34d,#d97706)',
+  'linear-gradient(135deg,#a5b4fc,#6366f1)','linear-gradient(135deg,#f9a8d4,#db2777)',
+  'linear-gradient(135deg,#86efac,#16a34a)','linear-gradient(135deg,#fdba74,#ea580c)',
+  'linear-gradient(135deg,#93c5fd,#2563eb)','linear-gradient(135deg,#d8b4fe,#9333ea)',
+];
+let LISTINGS = [
+  {id:1,title:'Sunny single room, 5-min walk to campus',uni:'University of Moratuwa',city:'Moratuwa',price:22000,type:'Single room',gender:'Boys',dist:'5 min walk',facs:['WiFi','Meals','Attached bathroom','Study table'],phone:'94771234567',days:1,featured:true,desc:'Quiet single room on the upper floor of a family house. Home-cooked meals included (breakfast + dinner). 5 minutes on foot to the main gate. Strictly for undergraduates.'},
+  {id:2,title:"Girls' boarding house with meals",uni:'University of Colombo',city:'Bambalapitiya',price:28000,type:'Boarding house',gender:'Girls',dist:'10 min by bus',facs:['WiFi','Meals','CCTV','Hot water'],phone:'94774567890',days:2,featured:true,desc:'Well-managed boarding for 8 girls with a warden on premises. Three meals, laundry twice a week, CCTV in common areas. Close to Marine Drive.'},
+  {id:3,title:'Furnished annex for two',uni:'University of Peradeniya',city:'Peradeniya',price:35000,type:'Annex',gender:'Any',dist:'7 min walk',facs:['Attached bathroom','Parking','Study table'],phone:'94777654321',days:3,featured:true,desc:'Separate 2-room annex with kitchenette and attached bathroom. Ideal for a pair of friends. Parking for a bike.'},
+  {id:4,title:'Budget double room for SJP students',uni:'Univ. of Sri Jayewardenepura',city:'Nugegoda',price:16000,type:'Double sharing',gender:'Boys',dist:'12 min walk',facs:['WiFi','Study table'],phone:'94712345678',days:1,desc:'Simple double room, two beds and study tables. Shared bathroom. Walking distance to the Wijerama entrance.'},
+  {id:5,title:'Modern studio annex with A/C',uni:'University of Kelaniya',city:'Kelaniya',price:30000,type:'Annex',gender:'Any',dist:'8 min walk',facs:['A/C','Attached bathroom','Parking','WiFi'],phone:'94763456789',days:5,desc:'Newly built studio with A/C, attached bathroom and small pantry. Separate entrance, very private.'},
+  {id:6,title:'Room with meals near Jaffna campus',uni:'University of Jaffna',city:'Jaffna',price:14000,type:'Single room',gender:'Girls',dist:'6 min walk',facs:['Meals','WiFi'],phone:'94745678901',days:2,desc:'Homely single room with vegetarian meals. Safe neighbourhood, 6 minutes to the university.'},
+  {id:7,title:'Boys boarding — hot water & wifi',uni:'University of Ruhuna',city:'Galle',price:18000,type:'Boarding house',gender:'Boys',dist:'15 min by bus',facs:['WiFi','Hot water','Study table'],phone:'94756789012',days:4,desc:'Clean boarding for 10 boys near the Galle bus stand. Hot water, wifi, and a quiet study hall.'},
+  {id:8,title:'Premium single room, Colombo 07',uni:'University of Colombo',city:'Colombo 07',price:45000,type:'Single room',gender:'Any',dist:'10 min by bus',facs:['A/C','Attached bathroom','WiFi','Parking','CCTV'],phone:'94767890123',days:6,featured:true,desc:'Executive single room in a quiet Colombo 07 residence. A/C, attached bath, work desk, high-speed fibre.'},
+  {id:9,title:'Shared room for 3 near Moratuwa',uni:'University of Moratuwa',city:'Moratuwa',price:12000,type:'Triple sharing',gender:'Boys',dist:'4 min walk',facs:['WiFi','Study table'],phone:'94778901234',days:1,desc:'Spacious room shared by three. Price is per person. Beds, tables and fans provided; very close to campus.'},
+  {id:10,title:'Family annex, Peradeniya hills',uni:'University of Peradeniya',city:'Peradeniya',price:40000,type:'Annex',gender:'Any',dist:'10 min by three-wheeler',facs:['Parking','Attached bathroom','Hot water'],phone:'94789012345',days:7,desc:'Two-bedroom annex with a view of the Hantana hills. Meals can be arranged with the main house.'},
+];
+let favs = new Set();
+try { favs = new Set(JSON.parse(localStorage.getItem('nestlkFavs')||'[]')); } catch(e){}
+function saveFavs(){ try{ localStorage.setItem('nestlkFavs', JSON.stringify([...favs])); }catch(e){} }
+/* approx coords per listing (jittered so pins don't stack) */
+const COORDS = {
+  1:[6.7752,79.8831], 2:[6.8921,79.8550], 3:[7.2615,80.5988], 4:[6.8738,79.8912],
+  5:[6.9568,79.9190], 6:[9.6630,80.0272], 7:[6.0550,80.2228], 8:[6.9052,79.8629],
+  9:[6.7710,79.8798], 10:[7.2579,80.5945],
+};
+/* my posted ads survive reloads (localStorage); a real backend would share them */
+let myAds = [];
+try { myAds = JSON.parse(localStorage.getItem('nestlkMyAds')||'[]'); } catch(e){}
+function saveMyAds(){ try{ localStorage.setItem('nestlkMyAds', JSON.stringify(myAds)); }catch(e){} }
+
+/* ================= helpers ================= */
+const $ = id => document.getElementById(id);
+const fmtRs = n => 'Rs. ' + n.toLocaleString('en-LK');
+const ago = d => d===0?'today':d===1?'yesterday':d+' days ago';
+const grad = id => GRAD[id % GRAD.length];
+const emo = id => EMOJI[id % EMOJI.length];
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+function toggleFav(id, ev){ ev.stopPropagation(); favs.has(id)?favs.delete(id):favs.add(id); saveFavs(); renderAll(); toast(favs.has(id)?'❤️ Saved':'Removed from saved'); }
+
+/* ================= navigation ================= */
+let curView='home';
+function go(v){
+  curView=v;
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+  $('v-'+v).classList.add('on');
+  document.querySelectorAll('nav.tab button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  window.scrollTo({top:0});
+  if(v==='saved') renderSaved();
+  if(v==='browse') renderBrowse();
+  if(v==='map') showMap();
+}
+
+/* ================= cards ================= */
+function cardHTML(l){
+  return `<div class="card" onclick="openDetail(${l.id})">
+    <div class="ph" style="background:${grad(l.id)}">
+      <span>${emo(l.id)}</span>
+      <span class="tag">${l.gender}</span>
+      ${l.featured?'<span class="feat">⭐ Featured</span>':''}
+      <button class="fav ${favs.has(l.id)?'on':''}" onclick="toggleFav(${l.id},event)">${favs.has(l.id)?'❤️':'🤍'}</button>
+      <span class="photos">📷 4</span>
+    </div>
+    <div class="cbody">
+      <div class="price">${fmtRs(l.price)} <small>/ month</small></div>
+      <div class="ctitle">${l.title}</div>
+      <div class="cmeta">📍 ${l.city} · 🚶 ${l.dist} · 🕒 ${ago(l.days)}</div>
+      <div class="pills"><span class="pill">${l.type}</span>${l.facs.slice(0,2).map(f=>`<span class="pill g">${f}</span>`).join('')}</div>
+    </div>
+  </div>`;
+}
+
+/* ================= home ================= */
+function renderHome(){
+  $('uniChips').innerHTML = `<button class="uchip on" data-u="">All</button>` +
+    UNIS.map(u=>`<button class="uchip" data-u="${u.name}">${u.city}</button>`).join('');
+  $('uniChips').querySelectorAll('.uchip').forEach(b=>b.onclick=()=>{
+    $('uniChips').querySelectorAll('.uchip').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    F.uni = b.dataset.u; $('funi').value = F.uni;
+    $('locLabel').textContent = b.dataset.u ? UNIS.find(u=>u.name===b.dataset.u).city : 'All campuses';
+    go('browse');
+  });
+  $('featGrid').innerHTML = LISTINGS.filter(l=>l.featured).slice(0,3).map(cardHTML).join('');
+  $('freshGrid').innerHTML = [...LISTINGS].sort((a,b)=>a.days-b.days).slice(0,3).map(cardHTML).join('');
+}
+function homeSearch(){
+  F.uni = $('hq-uni').value; F.maxPrice = $('hq-budget').value ? +$('hq-budget').value : 60000;
+  $('funi').value = F.uni; $('fprice').value = F.maxPrice; $('pval').textContent = F.maxPrice.toLocaleString('en-LK');
+  go('browse');
+}
+/* ================= browse + filters ================= */
+const F = { q:'', uni:'', maxPrice:60000, type:'', gender:'', facs:[] };
+function filteredListings(){
+  return LISTINGS.filter(l =>
+    (!F.q || (l.title+' '+l.city+' '+l.uni).toLowerCase().includes(F.q)) &&
+    (!F.uni || l.uni===F.uni) &&
+    l.price <= F.maxPrice &&
+    (!F.type || l.type===F.type) &&
+    (!F.gender || l.gender===F.gender || l.gender==='Any' || F.gender==='Any') &&
+    F.facs.every(f=>l.facs.includes(f))
+  );
+}
+/* ================= map ================= */
+let map = null, markers = [];
+function showMap(){
+  if(!window.L){ $('map').style.display='none'; $('mapFallback').style.display='block'; return; }
+  $('map').style.display='block'; $('mapFallback').style.display='none';
+  if(!map){
+    map = L.map('map').setView([7.8731, 80.7718], 7);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {maxZoom:18, attribution:'© OpenStreetMap contributors'}).addTo(map);
+  }
+  setTimeout(()=>{ map.invalidateSize(); refreshMarkers(); }, 150);
+}
+function refreshMarkers(){
+  if(!map) return;
+  markers.forEach(m=>map.removeLayer(m)); markers=[];
+  const list = filteredListings().filter(l=>l.lat!=null);
+  $('mapCount').textContent = list.length + (list.length===1?' pin':' pins');
+  list.forEach(l=>{
+    const mk = L.marker([l.lat, l.lng]).addTo(map);
+    mk.bindPopup('<div class="map-pop"><b>'+fmtRs(l.price)+' / mo</b><br>'+l.title+
+      '<br><span style="color:#64748b;font-size:12px">📍 '+l.city+' · 🚶 '+l.dist+'</span>'+
+      '<br><button onclick="openDetail('+l.id+')">View details</button></div>');
+    markers.push(mk);
+  });
+  if(list.length) map.fitBounds(L.latLngBounds(list.map(l=>[l.lat,l.lng])).pad(0.25));
+}
+function renderBrowse(){
+  $('typeChips').innerHTML = `<button class="fchip ${!F.type?'on':''}" data-t="">All types</button>` +
+    TYPES.map(t=>`<button class="fchip ${F.type===t?'on':''}" data-t="${t}">${t}</button>`).join('');
+  $('typeChips').querySelectorAll('.fchip').forEach(b=>b.onclick=()=>{F.type=b.dataset.t;renderBrowse();});
+  $('genderChips').innerHTML = `<button class="fchip ${!F.gender?'on':''}" data-g="">Anyone</button>` +
+    GENDERS.map(g=>`<button class="fchip ${F.gender===g?'on':''}" data-g="${g}">${g==='Any'?'Any / mixed':g+' only'}</button>`).join('');
+  $('genderChips').querySelectorAll('.fchip').forEach(b=>b.onclick=()=>{F.gender=b.dataset.g;renderBrowse();});
+  $('facChips').innerHTML = FACS.map(f=>`<button class="fchip ${F.facs.includes(f)?'on':''}" data-f="${f}">${f}</button>`).join('');
+  $('facChips').querySelectorAll('.fchip').forEach(b=>b.onclick=()=>{
+    const f=b.dataset.f; F.facs=F.facs.includes(f)?F.facs.filter(x=>x!==f):[...F.facs,f]; renderBrowse();
+  });
+  const list = filteredListings();
+  $('resCount').textContent = list.length + (list.length===1?' place':' places');
+  $('browseGrid').innerHTML = list.map(cardHTML).join('');
+  $('browseEmpty').style.display = list.length ? 'none' : 'block';
+}
+
+/* ================= detail ================= */
+function openDetail(id){
+  const l = LISTINGS.find(x=>x.id===id); if(!l) return;
+  const wa = 'https://wa.me/'+l.phone+'?text='+encodeURIComponent('Hi! I saw your "'+l.title+'" on NestLK ('+fmtRs(l.price)+'/month). Is it still available?');
+  $('detailBody').innerHTML =
+    '<div class="dgrid">'+
+      '<div class="dph" style="background:'+grad(l.id)+'"><span>'+emo(l.id)+'</span><span class="photos">📷 4 photos</span></div>'+
+      '<div class="dinfo">'+
+        '<div class="pills"><span class="pill">'+l.type+'</span><span class="pill g">'+l.gender+'</span>'+(l.featured?'<span class="pill g">⭐ Featured</span>':'')+'</div>'+
+        '<h2>'+l.title+'</h2>'+
+        '<div class="cmeta">📍 '+l.city+' · near '+l.uni+' · 🚶 '+l.dist+' · 🕒 posted '+ago(l.days)+'</div>'+
+        '<div class="dprice">'+fmtRs(l.price)+' <small>/ month</small></div>'+
+        '<div class="drow"><b>Facilities</b><span class="facs">'+l.facs.map(f=>'<span class="fac">✓ '+f+'</span>').join('')+'</span></div>'+
+        '<div class="contact">'+
+          '<a class="btn wa" href="'+wa+'" target="_blank" rel="noopener">💬 WhatsApp</a>'+
+          '<a class="btn teal" href="tel:+'+l.phone+'">📞 Call</a>'+
+          '<button class="btn ghost" onclick="toggleFav('+l.id+',event)">'+(favs.has(l.id)?'❤️ Saved':'🤍 Save')+'</button>'+
+        '</div>'+
+        '<p style="font-size:12px;color:var(--mut);margin-top:12px">🛡️ Safety tip: always visit the place before paying any advance.</p>'+
+      '</div>'+
+    '</div>'+
+    '<div class="desc"><h3>About this place</h3><p>'+l.desc+'</p></div>';
+  go('detail');
+}
+
+/* ================= saved ================= */
+function renderSaved(){
+  const list = LISTINGS.filter(l=>favs.has(l.id));
+  $('savedGrid').innerHTML = list.map(cardHTML).join('');
+  $('savedEmpty').style.display = list.length ? 'none' : 'block';
+}
+
+/* ================= post ad ================= */
+function postStep(n){
+  if(n===2){
+    if(!$('p-title').value.trim()){ toast('⚠️ Give your ad a title'); return; }
+    if(!$('p-price').value || +$('p-price').value<=0){ toast('⚠️ Enter a monthly rent'); return; }
+  }
+  if(n===3){
+    if(!$('p-name').value.trim()){ toast('⚠️ Add your name'); return; }
+    if(!$('p-phone').value.trim()){ toast('⚠️ Add a phone number'); return; }
+  }
+  [1,2,3].forEach(i=>{ $('step'+i).style.display = i===n?'grid':'none'; $('st'+i).classList.toggle('on', i<=n); });
+  window.scrollTo({top:0});
+}
+function publishAd(){
+  if(!$('p-name').value.trim()){ toast('⚠️ Add your name'); return; }
+  if(!$('p-phone').value.trim()){ toast('⚠️ Add a phone number'); return; }
+  const uni = UNIS.find(u=>u.name===$('p-uni').value) || UNIS[0];
+  const digits = $('p-phone').value.replace(/\D/g,'').replace(/^94/,'').replace(/^0/,'');
+  const l = {
+    id: Date.now(), title: $('p-title').value.trim(),
+    uni: $('p-uni').value, city: $('p-city').value.trim() || uni.city,
+    price: +$('p-price').value, type: $('p-type').value, gender: $('p-gender').value,
+    dist: $('p-dist').value.trim() || 'near campus',
+    facs: [...document.querySelectorAll('#p-facs input:checked')].map(c=>c.value),
+    phone: '94' + digits,
+    days: 0, featured: false,
+    desc: $('p-desc').value.trim() || 'Contact the owner for more details and photos.',
+  };
+  LISTINGS.unshift(l);
+  myAds.unshift(l); saveMyAds(); // keep my ads across reloads
+  ['p-title','p-city','p-price','p-dist','p-desc','p-name','p-phone'].forEach(id=>$(id).value='');
+  document.querySelectorAll('#p-facs input:checked').forEach(c=>c.checked=false);
+  postStep(1); renderAll(); go('browse');
+  toast('🚀 Your ad is live!');
+}
+function renderAll(){ renderHome(); renderBrowse(); if(curView==='saved') renderSaved(); }
+
+/* ================= init ================= */
+(function init(){
+  const opts = UNIS.map(u=>'<option value="'+u.name+'">'+u.name+' — '+u.city+'</option>').join('');
+  $('hq-uni').innerHTML = '<option value="">All universities</option>' + opts;
+  $('funi').innerHTML = '<option value="">All universities</option>' + opts;
+  $('p-uni').innerHTML = opts;
+  $('p-type').innerHTML = TYPES.map(t=>'<option>'+t+'</option>').join('');
+  $('p-facs').innerHTML = FACS.map(f=>'<label class="check"><input type="checkbox" value="'+f+'"> '+f+'</label>').join('');
+  $('fq').addEventListener('input',()=>{ F.q=$('fq').value.trim().toLowerCase(); renderBrowse(); });
+  $('funi').addEventListener('input',()=>{ F.uni=$('funi').value; renderBrowse(); });
+  $('fprice').addEventListener('input',()=>{
+    F.maxPrice=+$('fprice').value; $('pval').textContent=(+$('fprice').value).toLocaleString('en-LK'); renderBrowse();
+  });
+  // restore my posted ads + coords, then try the auto-update feed
+  LISTINGS.forEach(l=>{ const c=COORDS[l.id]; if(c){ l.lat=c[0]; l.lng=c[1]; } });
+  LISTINGS = [...myAds, ...LISTINGS];
+  renderAll();
+  loadFeed();
+})();
+/* Auto-update feed: scrapers (see /scraper) publish listings.json next to this
+   file on a schedule; the app merges new entries automatically. Falls back to
+   the built-in samples when offline or opened via file:// */
+function loadFeed(){
+  fetch('listings.json')
+    .then(r=>{ if(!r.ok) throw 0; return r.json(); })
+    .then(data=>{
+      if(!Array.isArray(data) || !data.length) return;
+      const have = new Set(LISTINGS.map(l=>l.id));
+      const fresh = data.filter(l=>l && !have.has(l.id));
+      if(fresh.length){
+        fresh.forEach(l=>{ l.days = l.days||0; });
+        LISTINGS = [...LISTINGS, ...fresh];
+        renderAll();
+        toast('🔄 ' + fresh.length + ' new listings loaded');
+      }
+    })
+    .catch(()=>{ /* offline / file:// — built-in samples stay */ });
+}
+</script>
+</body>
+</html>
