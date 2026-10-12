@@ -1,0 +1,1 @@
+{"dependencies":{"playwright":"^1.49.0"},"description":"Scheduled listing fetcher + manual import tool for NestLK","name":"nestlk-scraper","scripts":{"fetch":"node fetch-rentals.js","import":"node import-posts.js posts.txt"},"version":"1.0.0"}
