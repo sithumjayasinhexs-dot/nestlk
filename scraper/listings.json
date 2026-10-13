@@ -1,5 +1,28 @@
 [
  {
+  "id": "ikman-L2VuL2FkL29u",
+  "title": "One Room Annex for Rent Peradeniya",
+  "uni": "University of Peradeniya",
+  "city": "Kandy",
+  "price": 33000,
+  "type": "Annex",
+  "gender": "Any",
+  "dist": "see ad",
+  "facs": [],
+  "phone": null,
+  "days": 0,
+  "featured": false,
+  "source": "ikman.lk",
+  "url": "https://ikman.lk/en/ad/one-room-annex-for-rent-kandy-1",
+  "lat": 7.2864,
+  "lng": 80.6391,
+  "desc": "Imported from ikman.lk — photos shown; open the original ad for contact and full details.",
+  "photos": [
+   "photos/ikman-L2VuL2FkL29u-1.jpg",
+   "photos/ikman-L2VuL2FkL29u-2.jpg"
+  ]
+ },
+ {
   "id": "ikman-L2VuL2FkL3Jv",
   "title": "Rooms with Annex Rent in Nugegoda",
   "uni": "",
