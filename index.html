@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>NestLK — Student rentals near every campus</title>
 <style>
+/* mobile app-like fixes: no pull-to-refresh, no sideways drift */
+html,body{overflow-x:clip;overscroll-behavior-y:none}
   :root{
     --teal:#0f766e; --teal-d:#0d5f59; --amber:#f59e0b; --amber-d:#d97706;
     --ink:#1e293b; --mut:#64748b; --line:#e2e8f0; --bg:#f6f8f7; --card:#ffffff;
