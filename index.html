@@ -19,7 +19,7 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
   .wrap{max-width:1060px;margin:0 auto;padding:0 16px}
   header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .hbar{display:flex;align-items:center;gap:12px;padding:12px 0}
+  .hbar{display:flex;align-items:center;gap:12px;padding:calc(12px + env(safe-area-inset-top)) 16px 12px}
   .logo{font-weight:800;font-size:22px;letter-spacing:-.5px}
   .logo b{color:var(--teal)}
   .logo span{color:var(--amber-d)}
