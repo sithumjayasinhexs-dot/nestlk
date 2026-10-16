@@ -419,7 +419,7 @@ function renderHome(){
     go('browse');
   });
   $('featGrid').innerHTML = LISTINGS.filter(l=>l.featured).slice(0,3).map(cardHTML).join('');
-  $('freshGrid').innerHTML = [...LISTINGS].sort((a,b)=>a.days-b.days).slice(0,3).map(cardHTML).join('');
+  $('freshGrid').innerHTML = LISTINGS.slice(0,3).map(cardHTML).join(''); // newest first — feed prepends
 }
 function homeSearch(){
   F.uni = $('hq-uni').value; F.maxPrice = $('hq-budget').value ? +$('hq-budget').value : 60000;
@@ -583,7 +583,7 @@ function loadFeed(){
       const fresh = data.filter(l=>l && !have.has(l.id));
       if(fresh.length){
         fresh.forEach(l=>{ l.days = l.days||0; });
-        LISTINGS = [...LISTINGS, ...fresh];
+        LISTINGS = [...fresh, ...LISTINGS]; // newest listings first
         renderAll();
         toast('🔄 ' + fresh.length + ' new listings loaded');
       }
