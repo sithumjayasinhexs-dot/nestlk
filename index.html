@@ -144,8 +144,6 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
     cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px}
   nav.tab button .ic{font-size:21px}
   nav.tab button.on{color:var(--teal-d)}
-  nav.tab button.post .ic{background:var(--amber);color:#3a2a00;width:46px;height:30px;border-radius:999px;
-    display:flex;align-items:center;justify-content:center;font-size:18px}
   .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);
     background:var(--ink);color:#fff;padding:13px 22px;border-radius:999px;font-size:14px;
     font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:99;white-space:nowrap}
@@ -207,7 +205,6 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
       <div class="how">
         <div><div class="e">🔍</div><b>Search by campus</b><p>Pick your university — see only places students actually rent nearby.</p></div>
         <div><div class="e">💬</div><b>Contact direct</b><p>Call or WhatsApp the owner. No broker fees, no middlemen.</p></div>
-        <div><div class="e">📢</div><b>List for free</b><p>Got a spare room or annex? Post it in 2 minutes, reach thousands of students.</p></div>
       </div>
     </div>
     <div class="sec">
@@ -256,42 +253,6 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
     <div id="detailBody"></div>
   </div>
 
-  <div class="view" id="v-post">
-    <div class="sec">
-      <div class="sec-head"><h2>📢 Post your place</h2></div>
-      <p style="color:var(--mut);font-size:14px;margin-bottom:6px">Free listing · reaches students at all 8 campuses · takes ~2 minutes</p>
-      <div class="steps">
-        <div class="step on" id="st1">1 · Basics</div>
-        <div class="step" id="st2">2 · Details</div>
-        <div class="step" id="st3">3 · Contact</div>
-      </div>
-      <div class="form" id="step1">
-        <div><label>Title</label><input type="text" id="p-title" placeholder="e.g. Sunny single room near Moratuwa campus"></div>
-        <div class="frow2">
-          <div><label>University</label><select id="p-uni"></select></div>
-          <div><label>Area / City</label><input type="text" id="p-city" placeholder="e.g. Moratuwa"></div>
-        </div>
-        <div class="frow2">
-          <div><label>Monthly rent (Rs.)</label><input type="number" id="p-price" placeholder="22000"></div>
-          <div><label>Room type</label><select id="p-type"></select></div>
-        </div>
-        <div><label>For</label><select id="p-gender"><option>Boys</option><option>Girls</option><option>Any</option></select></div>
-        <div class="nav2"><span></span><button class="btn teal" onclick="postStep(2)">Next →</button></div>
-      </div>
-      <div class="form" id="step2" style="display:none">
-        <div><label>Distance to campus</label><input type="text" id="p-dist" placeholder="e.g. 5 min walk"></div>
-        <div><label>Description</label><textarea id="p-desc" placeholder="Describe the room, house rules, what's nearby…"></textarea></div>
-        <div><label>Facilities</label><div class="checkgrid" id="p-facs"></div></div>
-        <div class="nav2"><button class="btn ghost" onclick="postStep(1)">← Back</button><button class="btn teal" onclick="postStep(3)">Next →</button></div>
-      </div>
-      <div class="form" id="step3" style="display:none">
-        <div><label>Your name</label><input type="text" id="p-name" placeholder="e.g. Mrs. Perera"></div>
-        <div><label>Phone / WhatsApp</label><input type="tel" id="p-phone" placeholder="0771234567"></div>
-        <div class="nav2"><button class="btn ghost" onclick="postStep(2)">← Back</button><button class="btn" onclick="publishAd()">🚀 Publish ad</button></div>
-      </div>
-    </div>
-  </div>
-
   <div class="view" id="v-saved">
     <div class="sec">
       <div class="sec-head"><h2>❤️ Saved places</h2></div>
@@ -307,7 +268,6 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
   <button class="on" data-v="home" onclick="go('home')"><span class="ic">🏠</span>Home</button>
   <button data-v="browse" onclick="go('browse')"><span class="ic">🔍</span>Search</button>
   <button data-v="map" onclick="go('map')"><span class="ic">🗺️</span>Map</button>
-  <button data-v="post" class="post" onclick="go('post')"><span class="ic">＋</span>Post ad</button>
   <button data-v="saved" onclick="go('saved')"><span class="ic">❤️</span>Saved</button>
 </nav>
 
@@ -355,10 +315,6 @@ const COORDS = {
   5:[6.9568,79.9190], 6:[9.6630,80.0272], 7:[6.0550,80.2228], 8:[6.9052,79.8629],
   9:[6.7710,79.8798], 10:[7.2579,80.5945],
 };
-/* my posted ads survive reloads (localStorage); a real backend would share them */
-let myAds = [];
-try { myAds = JSON.parse(localStorage.getItem('nestlkMyAds')||'[]'); } catch(e){}
-function saveMyAds(){ try{ localStorage.setItem('nestlkMyAds', JSON.stringify(myAds)); }catch(e){} }
 
 /* ================= helpers ================= */
 const $ = id => document.getElementById(id);
@@ -515,41 +471,6 @@ function renderSaved(){
   $('savedEmpty').style.display = list.length ? 'none' : 'block';
 }
 
-/* ================= post ad ================= */
-function postStep(n){
-  if(n===2){
-    if(!$('p-title').value.trim()){ toast('⚠️ Give your ad a title'); return; }
-    if(!$('p-price').value || +$('p-price').value<=0){ toast('⚠️ Enter a monthly rent'); return; }
-  }
-  if(n===3){
-    if(!$('p-name').value.trim()){ toast('⚠️ Add your name'); return; }
-    if(!$('p-phone').value.trim()){ toast('⚠️ Add a phone number'); return; }
-  }
-  [1,2,3].forEach(i=>{ $('step'+i).style.display = i===n?'grid':'none'; $('st'+i).classList.toggle('on', i<=n); });
-  window.scrollTo({top:0});
-}
-function publishAd(){
-  if(!$('p-name').value.trim()){ toast('⚠️ Add your name'); return; }
-  if(!$('p-phone').value.trim()){ toast('⚠️ Add a phone number'); return; }
-  const uni = UNIS.find(u=>u.name===$('p-uni').value) || UNIS[0];
-  const digits = $('p-phone').value.replace(/\D/g,'').replace(/^94/,'').replace(/^0/,'');
-  const l = {
-    id: Date.now(), title: $('p-title').value.trim(),
-    uni: $('p-uni').value, city: $('p-city').value.trim() || uni.city,
-    price: +$('p-price').value, type: $('p-type').value, gender: $('p-gender').value,
-    dist: $('p-dist').value.trim() || 'near campus',
-    facs: [...document.querySelectorAll('#p-facs input:checked')].map(c=>c.value),
-    phone: '94' + digits,
-    days: 0, featured: false,
-    desc: $('p-desc').value.trim() || 'Contact the owner for more details and photos.',
-  };
-  LISTINGS.unshift(l);
-  myAds.unshift(l); saveMyAds(); // keep my ads across reloads
-  ['p-title','p-city','p-price','p-dist','p-desc','p-name','p-phone'].forEach(id=>$(id).value='');
-  document.querySelectorAll('#p-facs input:checked').forEach(c=>c.checked=false);
-  postStep(1); renderAll(); go('browse');
-  toast('🚀 Your ad is live!');
-}
 function renderAll(){ renderHome(); renderBrowse(); if(curView==='saved') renderSaved(); }
 
 /* ================= init ================= */
@@ -557,17 +478,12 @@ function renderAll(){ renderHome(); renderBrowse(); if(curView==='saved') render
   const opts = UNIS.map(u=>'<option value="'+u.name+'">'+u.name+' — '+u.city+'</option>').join('');
   $('hq-uni').innerHTML = '<option value="">All universities</option>' + opts;
   $('funi').innerHTML = '<option value="">All universities</option>' + opts;
-  $('p-uni').innerHTML = opts;
-  $('p-type').innerHTML = TYPES.map(t=>'<option>'+t+'</option>').join('');
-  $('p-facs').innerHTML = FACS.map(f=>'<label class="check"><input type="checkbox" value="'+f+'"> '+f+'</label>').join('');
   $('fq').addEventListener('input',()=>{ F.q=$('fq').value.trim().toLowerCase(); renderBrowse(); });
   $('funi').addEventListener('input',()=>{ F.uni=$('funi').value; renderBrowse(); });
   $('fprice').addEventListener('input',()=>{
     F.maxPrice=+$('fprice').value; $('pval').textContent=(+$('fprice').value).toLocaleString('en-LK'); renderBrowse();
   });
-  // restore my posted ads + coords, then try the auto-update feed
   LISTINGS.forEach(l=>{ const c=COORDS[l.id]; if(c){ l.lat=c[0]; l.lng=c[1]; } });
-  LISTINGS = [...myAds, ...LISTINGS];
   renderAll();
   loadFeed();
 })();
