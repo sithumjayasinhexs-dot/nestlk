@@ -2,7 +2,7 @@
  {
   "id": "patpat-423971",
   "title": "Room for Rent in Dehiwala",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Dehiwala",
   "price": 15000,
   "type": "Boarding",
@@ -26,7 +26,7 @@
  {
   "id": "patpat-423969",
   "title": "Room for Rent in Dehiwala",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Dehiwala",
   "price": 15000,
   "type": "Single room",
@@ -50,7 +50,7 @@
  {
   "id": "patpat-423933",
   "title": "Room for Rent in Battaramulla",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Battaramulla",
   "price": 20000,
   "type": "Boarding",
@@ -98,7 +98,7 @@
  {
   "id": "patpat-423330",
   "title": "Annex for Rent in Maharagama",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Maharagama",
   "price": 30000,
   "type": "Annex",
@@ -122,7 +122,7 @@
  {
   "id": "patpat-423193",
   "title": "Room for Rent in Mattegoda",
-  "uni": "",
+  "uni": "Buddhist and Pali University",
   "city": "Mattegoda",
   "price": 16500,
   "type": "Single room",
@@ -170,7 +170,7 @@
  {
   "id": "patpat-422499",
   "title": "Room for Rent in Maharagama",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Maharagama",
   "price": 13000,
   "type": "Boarding",
@@ -194,7 +194,7 @@
  {
   "id": "patpat-422446",
   "title": "Annex for Rent in Malabe",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Malabe",
   "price": 75000,
   "type": "Annex",
@@ -264,7 +264,7 @@
  {
   "id": "patpat-419443",
   "title": "Annex for Rent in Mount Lavinia",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Mount Lavinia",
   "price": 43000,
   "type": "Annex",
@@ -288,7 +288,7 @@
  {
   "id": "patpat-418649",
   "title": "Room for Rent in Dehiwala",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Dehiwala",
   "price": 14000,
   "type": "Boarding",
@@ -336,7 +336,7 @@
  {
   "id": "patpat-414669",
   "title": "Room for Rent in Delgoda",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Delgoda",
   "price": 70000,
   "type": "Single room",
@@ -360,7 +360,7 @@
  {
   "id": "patpat-412951",
   "title": "for Rent in Delgoda",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Delgoda",
   "price": 65000,
   "type": "Single room",
@@ -408,7 +408,7 @@
  {
   "id": "patpat-420708",
   "title": "Room for Rent in Malabe",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Malabe",
   "price": 22000,
   "type": "Single room",
@@ -428,7 +428,7 @@
  {
   "id": "patpat-420431",
   "title": "Room for Rent in Boralesgamuwa",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Boralesgamuwa",
   "price": 15000,
   "type": "Single room",
@@ -452,7 +452,7 @@
  {
   "id": "patpat-419832",
   "title": "Room for Rent in Athurugiriya",
-  "uni": "",
+  "uni": "Buddhist and Pali University",
   "city": "Athurugiriya",
   "price": 13500,
   "type": "Single room",
@@ -476,7 +476,7 @@
  {
   "id": "patpat-420242",
   "title": "Room for Rent in Piliyandala",
-  "uni": "",
+  "uni": "Kotelawala Defence University",
   "city": "Piliyandala",
   "price": 50000,
   "type": "Single room",
@@ -496,33 +496,9 @@
   ]
  },
  {
-  "id": "patpat-419743",
-  "title": "Room for Rent in Kurunegala",
-  "uni": "Wayamba University",
-  "city": "Kurunegala",
-  "price": 25000,
-  "type": "Single room",
-  "gender": "Ladies",
-  "dist": "see ad",
-  "facs": [],
-  "phone": "+94718888283",
-  "days": 1,
-  "featured": false,
-  "source": "patpat.lk",
-  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-kurunegala-419743",
-  "lat": 7.4872,
-  "lng": 80.3641,
-  "desc": "Imported from patpat.lk — A comfortable boarding room is available for two girls on a shared basis at Rs. 25,000 per person per month, including meals. The room is suitable for Girls looking for a convenient and",
-  "photos": [
-   "https://cdn.patpat.lk/listing-media-files/uploads/N7OkGuTfeSR7TtrP5urrcBqFpuFYKqfQdGTDXVAO.jpg",
-   "https://cdn.patpat.lk/listing-media-files/uploads/KqGVQEayhj01N7Xl4jQxEtUqlVbwWJiTL3zzzHsa.jpg",
-   "https://cdn.patpat.lk/listing-media-files/uploads/jpYkQAHurIU03LyK2YGGeV0yvXCUf2oKXY2Bsso9.jpg"
-  ]
- },
- {
   "id": "patpat-419764",
   "title": "Room for Rent in Battaramulla",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Battaramulla",
   "price": 31000,
   "type": "Single room",
@@ -586,7 +562,7 @@
  {
   "id": "patpat-417938",
   "title": "Annex for Rent in Maharagama",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Maharagama",
   "price": 125000,
   "type": "Annex",
@@ -606,7 +582,7 @@
  {
   "id": "patpat-417868",
   "title": "Annex for Rent in Nugegoda",
-  "uni": "Univ. of Sri Jayewardenepura",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Nugegoda",
   "price": 165000,
   "type": "Annex",
@@ -626,7 +602,7 @@
  {
   "id": "patpat-418042",
   "title": "Annex for Rent in Wattala",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Wattala",
   "price": 40000,
   "type": "Annex",
@@ -650,7 +626,7 @@
  {
   "id": "patpat-416908",
   "title": "Room for Rent in Nugegoda",
-  "uni": "Univ. of Sri Jayewardenepura",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Nugegoda",
   "price": 15000,
   "type": "Single room",
@@ -674,7 +650,7 @@
  {
   "id": "patpat-416785",
   "title": "Annex for Rent in Maharagama",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Maharagama",
   "price": 30000,
   "type": "Annex",
@@ -698,7 +674,7 @@
  {
   "id": "patpat-416693",
   "title": "Room for Rent in Maharagama",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Maharagama",
   "price": 20000,
   "type": "Single room",
@@ -722,7 +698,7 @@
  {
   "id": "patpat-416558",
   "title": "Room for Rent in Malabe",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Malabe",
   "price": 12500,
   "type": "Single room",
@@ -745,7 +721,7 @@
  {
   "id": "patpat-416534",
   "title": "Annex for Rent in Mount Lavinia",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Mount Lavinia",
   "price": 85000,
   "type": "Annex",
@@ -769,7 +745,7 @@
  {
   "id": "patpat-416325",
   "title": "Room for Rent in Nugegoda",
-  "uni": "Univ. of Sri Jayewardenepura",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Nugegoda",
   "price": 18500,
   "type": "Single room",
@@ -793,7 +769,7 @@
  {
   "id": "patpat-416398",
   "title": "Room for Rent in Mahabage",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Mahabage",
   "price": 25000,
   "type": "Single room",
@@ -813,7 +789,7 @@
  {
   "id": "patpat-416395",
   "title": "Annex for Rent in Halloluwa",
-  "uni": "",
+  "uni": "University of Peradeniya",
   "city": "Halloluwa",
   "price": 30000,
   "type": "Annex",
@@ -837,7 +813,7 @@
  {
   "id": "patpat-416100",
   "title": "Annex for Rent in Rajagiriya",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Rajagiriya",
   "price": 12000,
   "type": "Annex",
@@ -861,7 +837,7 @@
  {
   "id": "patpat-415921",
   "title": "Room for Rent in Rajagiriya",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Rajagiriya",
   "price": 8500,
   "type": "Boarding",
@@ -885,7 +861,7 @@
  {
   "id": "patpat-409939",
   "title": "Room for Rent in Kadawatha",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Kadawatha",
   "price": 16500,
   "type": "Single room",
@@ -909,7 +885,7 @@
  {
   "id": "patpat-415745",
   "title": "Annex for Rent in Ethul Kotte",
-  "uni": "",
+  "uni": "The Open University of Sri Lanka",
   "city": "Ethul Kotte",
   "price": 50000,
   "type": "Annex",
@@ -933,7 +909,7 @@
  {
   "id": "patpat-411333",
   "title": "Room for Rent in Malabe",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Malabe",
   "price": 20000,
   "type": "Single room",
@@ -956,7 +932,7 @@
  {
   "id": "patpat-411165",
   "title": "Annex for Rent in Maharagama",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Maharagama",
   "price": 30000,
   "type": "Annex",
@@ -980,7 +956,7 @@
  {
   "id": "patpat-410991",
   "title": "Annex for Rent in Hokandara",
-  "uni": "",
+  "uni": "Kotelawala Defence University",
   "city": "Hokandara",
   "price": 70000,
   "type": "Annex",
@@ -1004,7 +980,7 @@
  {
   "id": "patpat-409536",
   "title": "Annex for Rent in Piliyandala",
-  "uni": "",
+  "uni": "Kotelawala Defence University",
   "city": "Piliyandala",
   "price": 13000,
   "type": "Annex",
@@ -1028,7 +1004,7 @@
  {
   "id": "patpat-410143",
   "title": "Annex for Rent in Pannipitiya",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Pannipitiya",
   "price": 62000,
   "type": "Annex",
@@ -1052,7 +1028,7 @@
  {
   "id": "patpat-408050",
   "title": "Room for Rent in Nugegoda",
-  "uni": "Univ. of Sri Jayewardenepura",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Nugegoda",
   "price": 550000,
   "type": "Boarding",
@@ -1076,7 +1052,7 @@
  {
   "id": "patpat-407970",
   "title": "Annex for Rent in Kirulapone",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Kirulapone",
   "price": 85000,
   "type": "Annex",
@@ -1124,7 +1100,7 @@
  {
   "id": "patpat-406947",
   "title": "Annex for Rent in Boralesgamuwa",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Boralesgamuwa",
   "price": 25000,
   "type": "Annex",
@@ -1144,7 +1120,7 @@
  {
   "id": "patpat-415453",
   "title": "Room for Rent in Delgoda",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Delgoda",
   "price": 65000,
   "type": "Single room",
@@ -1168,7 +1144,7 @@
  {
   "id": "patpat-414976",
   "title": "Annex for Rent in Malabe",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Malabe",
   "price": 12000,
   "type": "Annex",
@@ -1192,7 +1168,7 @@
  {
   "id": "patpat-414797",
   "title": "Room for Rent in Kottawa",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Kottawa",
   "price": 20000,
   "type": "Single room",
@@ -1216,7 +1192,7 @@
  {
   "id": "patpat-414810",
   "title": "Room for Rent in Bellanwila",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Bellanwila",
   "price": 20000,
   "type": "Boarding",
@@ -1236,7 +1212,7 @@
  {
   "id": "patpat-414807",
   "title": "Room for Rent in Bellanwila",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Bellanwila",
   "price": 15000,
   "type": "Single room",
@@ -1256,7 +1232,7 @@
  {
   "id": "patpat-414643",
   "title": "Annex for Rent in Pannipitiya",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Pannipitiya",
   "price": 30000,
   "type": "Annex",
@@ -1278,7 +1254,7 @@
  {
   "id": "patpat-414593",
   "title": "Room for Rent in Pannipitiya",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Pannipitiya",
   "price": 20000,
   "type": "Single room",
@@ -1326,7 +1302,7 @@
  {
   "id": "patpat-414047",
   "title": "Annex for Rent in Nugegoda",
-  "uni": "Univ. of Sri Jayewardenepura",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Nugegoda",
   "price": 60000,
   "type": "Annex",
@@ -1370,7 +1346,7 @@
  {
   "id": "patpat-413706",
   "title": "Room for Rent in Malabe",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Malabe",
   "price": 65000,
   "type": "Single room",
@@ -1390,7 +1366,7 @@
  {
   "id": "patpat-413535",
   "title": "Room for Rent in Gampaha",
-  "uni": "",
+  "uni": "Gampaha Wickramarachchi University",
   "city": "Gampaha",
   "price": 8500,
   "type": "Single room",
@@ -1414,7 +1390,7 @@
  {
   "id": "patpat-413287",
   "title": "Room for Rent in Boralesgamuwa",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Boralesgamuwa",
   "price": 15000,
   "type": "Boarding",
@@ -1434,7 +1410,7 @@
  {
   "id": "patpat-413078",
   "title": "Room for Rent in Malabe",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Malabe",
   "price": 25000,
   "type": "Single room",
@@ -1458,7 +1434,7 @@
  {
   "id": "patpat-412635",
   "title": "Room for Rent in Nugegoda",
-  "uni": "Univ. of Sri Jayewardenepura",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Nugegoda",
   "price": 30000,
   "type": "Single room",
@@ -1482,7 +1458,7 @@
  {
   "id": "patpat-411680",
   "title": "Annex for Rent in Yakkala",
-  "uni": "",
+  "uni": "Gampaha Wickramarachchi University",
   "city": "Yakkala",
   "price": 30000,
   "type": "Annex",
@@ -1506,7 +1482,7 @@
  {
   "id": "patpat-411369",
   "title": "Room for Rent in Athurugiriya",
-  "uni": "",
+  "uni": "Buddhist and Pali University",
   "city": "Athurugiriya",
   "price": 13000,
   "type": "Single room",
@@ -1530,7 +1506,7 @@
  {
   "id": "ikman-L2VuL2FkL3Jl",
   "title": "Rent / Bording ROOMs Accommodation/ Hostel For Working Girls In Malabe",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Colombo",
   "price": 12500,
   "type": "Single room",
@@ -1576,7 +1552,7 @@
  {
   "id": "ikman-L2VuL2FkL3Jv",
   "title": "Rooms with Annex Rent in Nugegoda",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Colombo",
   "price": 14000,
   "type": "Annex",
@@ -1600,7 +1576,7 @@
  {
   "id": "ikman-L2VuL2FkL3Ro",
   "title": "Three Bed Rooms Annex For Rent in Kelaniya",
-  "uni": "",
+  "uni": "Gampaha Wickramarachchi University",
   "city": "Gampaha",
   "price": 45000,
   "type": "Annex",
@@ -1622,7 +1598,7 @@
  {
   "id": "ikman-L2VuL2FkL2x1",
   "title": "Luxury Anex Room Rent Makola",
-  "uni": "",
+  "uni": "Gampaha Wickramarachchi University",
   "city": "Gampaha",
   "price": 35000,
   "type": "Single room",
@@ -1645,7 +1621,7 @@
  {
   "id": "ikman-L2VuL2FkL2Fu",
   "title": "Annex Room for Rent Makola",
-  "uni": "",
+  "uni": "Gampaha Wickramarachchi University",
   "city": "Gampaha",
   "price": 47500,
   "type": "Annex",
@@ -1667,7 +1643,7 @@
  {
   "id": "ikman-L2VuL2FkL3Vw",
   "title": "Up Stair Two Rooms Annex (1000 Sqft) for Rent - Maharagama",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Colombo",
   "price": 55000,
   "type": "Annex",
@@ -1689,7 +1665,7 @@
  {
   "id": "ikman-L2VuL2FkLzEt",
   "title": "1 Bed room Annex for long term rent - Ladies only",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Colombo",
   "price": 80000,
   "type": "Annex",
@@ -1713,7 +1689,7 @@
  {
   "id": "ikman-L2VuL2FkL2Jv",
   "title": "Boarding Room For Rent - Ladies/Student In Wijerama, Nugegoda",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Colombo",
   "price": 9000,
   "type": "Boarding house",
@@ -1737,7 +1713,7 @@
  {
   "id": "ikman-L2VuL2FkL21h",
   "title": "Malabe Boarding Rooms Rent",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Colombo",
   "price": 13500,
   "type": "Boarding house",
@@ -1760,7 +1736,7 @@
  {
   "id": "ikman-L2VuL2FkL2Z1",
   "title": "Furnishing Upstair Boarding Room for Rent in Visaka Watta Jaela",
-  "uni": "",
+  "uni": "Gampaha Wickramarachchi University",
   "city": "Gampaha",
   "price": 17000,
   "type": "Boarding house",
@@ -1784,7 +1760,7 @@
  {
   "id": "ikman-L2VuL2FkL2dp",
   "title": "Girls Boarding Room for Rent in Kirulopana Colombo 5",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Colombo",
   "price": 14000,
   "type": "Boarding house",
@@ -1808,7 +1784,7 @@
  {
   "id": "patpat-409213",
   "title": "Room for Rent in Malabe",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Malabe",
   "price": 13000,
   "type": "Single room",
@@ -1828,7 +1804,7 @@
  {
   "id": "patpat-405877",
   "title": "Room for Rent in Kottawa",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Kottawa",
   "price": 16500,
   "type": "Single room",
@@ -1848,7 +1824,7 @@
  {
   "id": "patpat-405994",
   "title": "Annex for Rent in Maharagama",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Maharagama",
   "price": 30000,
   "type": "Annex",
@@ -1868,7 +1844,7 @@
  {
   "id": "patpat-375268",
   "title": "Annex for Rent in Piliyandala",
-  "uni": "University of Moratuwa",
+  "uni": "Kotelawala Defence University",
   "city": "Piliyandala",
   "price": 15000,
   "type": "Annex",
@@ -1888,7 +1864,7 @@
  {
   "id": "patpat-375278",
   "title": "Annex for Rent in Battaramulla",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Battaramulla",
   "price": 55000,
   "type": "Annex",
@@ -1908,7 +1884,7 @@
  {
   "id": "patpat-368016",
   "title": "Annex for Rent in Rajagiriya",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Rajagiriya",
   "price": 36000,
   "type": "Annex",
@@ -1928,7 +1904,7 @@
  {
   "id": "patpat-362286",
   "title": "Annex for Rent in Kottawa",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Kottawa",
   "price": 25000,
   "type": "Annex",
@@ -1948,7 +1924,7 @@
  {
   "id": "patpat-300640",
   "title": "Annex for Rent in Nugegoda",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Nugegoda",
   "price": 50000,
   "type": "Annex",
@@ -1968,7 +1944,7 @@
  {
   "id": "patpat-210589",
   "title": "Unfurnished Apartment for Rent in Moratuwa",
-  "uni": "",
+  "uni": "University of Moratuwa",
   "city": "Moratuwa",
   "price": 90000,
   "type": "Apartment",
@@ -1988,7 +1964,7 @@
  {
   "id": "patpat-394230",
   "title": "Girls' Boarding Place - Nedimala, Dehiwala",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Dehiwala",
   "price": 25000,
   "type": "Boarding",
@@ -2008,7 +1984,7 @@
  {
   "id": "patpat-360233",
   "title": "Girls' Boarding Place - Bellanwila",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Dehiwala",
   "price": 20000,
   "type": "Boarding",
@@ -2048,7 +2024,7 @@
  {
   "id": "patpat-409828",
   "title": "Room for Rent in Peliyagoda",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Peliyagoda",
   "price": 25000,
   "type": "Single room",
@@ -2068,7 +2044,7 @@
  {
   "id": "patpat-409029",
   "title": "Room for Rent in Boralesgamuwa",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Boralesgamuwa",
   "price": 25000,
   "type": "Single room",
@@ -2088,7 +2064,7 @@
  {
   "id": "patpat-408891",
   "title": "Room for Rent in Rajagiriya",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Rajagiriya",
   "price": 45000,
   "type": "Single room",
@@ -2108,7 +2084,7 @@
  {
   "id": "patpat-408777",
   "title": "Room for Rent in Kaduwela",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Kaduwela",
   "price": 25000,
   "type": "Single room",
@@ -2128,7 +2104,7 @@
  {
   "id": "patpat-409184",
   "title": "Room for Rent in Panadura",
-  "uni": "",
+  "uni": "University of Moratuwa",
   "city": "Panadura",
   "price": 35000,
   "type": "Single room",
@@ -2148,7 +2124,7 @@
  {
   "id": "patpat-408053",
   "title": "Annex for Rent in Kohuwala",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Kohuwala",
   "price": 70000,
   "type": "Annex",
@@ -2168,7 +2144,7 @@
  {
   "id": "patpat-407337",
   "title": "Annex for Rent in Ratmalana",
-  "uni": "",
+  "uni": "Kotelawala Defence University",
   "city": "Ratmalana",
   "price": 15000,
   "type": "Annex",
@@ -2188,7 +2164,7 @@
  {
   "id": "patpat-406690",
   "title": "Room for Rent in Dehiwala",
-  "uni": "",
+  "uni": "University of Sri Jayewardenepura",
   "city": "Dehiwala",
   "price": 20000,
   "type": "Single room",
@@ -2208,7 +2184,7 @@
  {
   "id": "patpat-406217",
   "title": "Room for Rent in Rajagiriya",
-  "uni": "",
+  "uni": "University of Colombo",
   "city": "Rajagiriya",
   "price": 8000,
   "type": "Single room",
@@ -2248,7 +2224,7 @@
  {
   "id": "patpat-406035",
   "title": "Room for Rent in Katugastota",
-  "uni": "",
+  "uni": "University of Peradeniya",
   "city": "Katugastota",
   "price": 12000,
   "type": "Single room",
@@ -2268,7 +2244,7 @@
  {
   "id": "patpat-404274",
   "title": "Room for Rent in Godagama",
-  "uni": "",
+  "uni": "Buddhist and Pali University",
   "city": "Godagama",
   "price": 12000,
   "type": "Single room",
@@ -2328,7 +2304,7 @@
  {
   "id": "fbmkt-1113351734520662",
   "title": "Room for rent",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Pahala Karagahamuna East",
   "price": 15000,
   "type": "Single room",
@@ -2648,7 +2624,7 @@
  {
   "id": "fbmkt-1565595918123440",
   "title": "room for rent  at wellawatta￼",
-  "uni": "University of Colombo",
+  "uni": "University of Kelaniya",
   "city": "Colombo",
   "price": 35000,
   "type": "Single room",
@@ -2888,7 +2864,7 @@
  {
   "id": "fbmkt-2176022206284958",
   "title": "One sharing room for rent at wattalla 13000 call [hidden information]",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Wanawasala West",
   "price": 13000,
   "type": "Double sharing",
@@ -2908,7 +2884,7 @@
  {
   "id": "fbmkt-3098500320541805",
   "title": "Boarding Room Rent",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Pahala Biyanwila East",
   "price": 12500,
   "type": "Boarding house",
@@ -2948,7 +2924,7 @@
  {
   "id": "fbmkt-1388346006379431",
   "title": "Room for rent",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Alexendrawatta",
   "price": 6500,
   "type": "Single room",
@@ -3746,29 +3722,9 @@
   "photos": []
  },
  {
-  "id": "fbmkt-2356201691870841",
-  "title": "🏡 GROUND FLOOR HOUSE FOR RENT – ADIAMBALAMA, KATUNAYAKE",
-  "uni": "",
-  "city": "Katunayake",
-  "price": 50000,
-  "type": "House",
-  "gender": "Any",
-  "dist": "see ad",
-  "facs": [],
-  "phone": "0763732835",
-  "days": 0,
-  "featured": false,
-  "source": "facebook",
-  "url": "https://www.facebook.com/marketplace/item/2356201691870841",
-  "lat": 7.8912,
-  "lng": 80.786,
-  "desc": "From Facebook Marketplace — 🏡 GROUND FLOOR HOUSE FOR RENT – ADIAMBALAMA, KATUNAYAKE 🛏️ 2 Bedrooms | 🚿 1 Bathroom 🛋️ Living Room | 🍳 Kitchen 📍 50m to Main Road 👫 Suitabl; open the original listing for contact and full",
-  "photos": []
- },
- {
   "id": "fbmkt-1849869492861326",
   "title": "Room for Rent",
-  "uni": "",
+  "uni": "University of Kelaniya",
   "city": "Vijayarajadahana",
   "price": 9000,
   "type": "Single room",
