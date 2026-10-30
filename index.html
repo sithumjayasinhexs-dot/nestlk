@@ -185,12 +185,6 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
         <p>Rooms, annexes &amp; boarding houses around Sri Lanka's universities — direct from owners, no brokers.</p>
         <div class="searchbar">
           <select id="hq-uni"><option value="">All universities</option></select>
-          <select id="hq-budget">
-            <option value="">Any budget</option>
-            <option value="15000">Under Rs. 15,000</option>
-            <option value="25000">Under Rs. 25,000</option>
-            <option value="40000">Under Rs. 40,000</option>
-          </select>
           <button class="btn" onclick="homeSearch()">Search</button>
         </div>
       </div>
@@ -221,17 +215,10 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
           <input type="text" id="fq" placeholder="Search title, area…" style="flex:1;min-width:160px">
           <select id="funi"><option value="">All universities</option></select>
         </div>
-        <div class="frow">
-          <label>Max Rs. <span id="pval">50,000</span></label>
-          <input type="range" id="fprice" min="10000" max="60000" step="5000" value="60000">
-        </div>
-        <div class="frow" id="typeChips"></div>
-        <div class="frow" id="genderChips"></div>
-        <div class="frow" id="facChips"></div>
       </div>
       <div class="grid" id="browseGrid"></div>
       <div class="empty" id="browseEmpty" style="display:none">
-        <div class="big">🏚️</div><h3>No places match</h3><p>Try widening the budget or clearing a filter.</p>
+        <div class="big">🏚️</div><h3>No places match</h3><p>Try a different search or university.</p>
       </div>
     </div>
   </div>
@@ -390,12 +377,12 @@ function renderHome(){
   $('freshGrid').innerHTML = LISTINGS.slice(0,3).map(cardHTML).join(''); // newest first — feed prepends
 }
 function homeSearch(){
-  F.uni = $('hq-uni').value; F.maxPrice = $('hq-budget').value ? +$('hq-budget').value : 60000;
-  $('funi').value = F.uni; $('fprice').value = F.maxPrice; $('pval').textContent = F.maxPrice.toLocaleString('en-LK');
+  F.uni = $('hq-uni').value;
+  $('funi').value = F.uni;
   go('browse');
 }
 /* ================= browse + filters ================= */
-const F = { q:'', uni:'', maxPrice:60000, type:'', gender:'', facs:[] };
+const F = { q:'', uni:'', maxPrice:1000000000, type:'', gender:'', facs:[] };
 function filteredListings(){
   return LISTINGS.filter(l =>
     (!F.q || (l.title+' '+l.city+' '+l.uni).toLowerCase().includes(F.q)) &&
@@ -433,16 +420,6 @@ function refreshMarkers(){
   if(list.length) map.fitBounds(L.latLngBounds(list.map(l=>[l.lat,l.lng])).pad(0.25));
 }
 function renderBrowse(){
-  $('typeChips').innerHTML = `<button class="fchip ${!F.type?'on':''}" data-t="">All types</button>` +
-    TYPES.map(t=>`<button class="fchip ${F.type===t?'on':''}" data-t="${t}">${t}</button>`).join('');
-  $('typeChips').querySelectorAll('.fchip').forEach(b=>b.onclick=()=>{F.type=b.dataset.t;renderBrowse();});
-  $('genderChips').innerHTML = `<button class="fchip ${!F.gender?'on':''}" data-g="">Anyone</button>` +
-    GENDERS.map(g=>`<button class="fchip ${F.gender===g?'on':''}" data-g="${g}">${g==='Any'?'Any / mixed':g+' only'}</button>`).join('');
-  $('genderChips').querySelectorAll('.fchip').forEach(b=>b.onclick=()=>{F.gender=b.dataset.g;renderBrowse();});
-  $('facChips').innerHTML = FACS.map(f=>`<button class="fchip ${F.facs.includes(f)?'on':''}" data-f="${f}">${f}</button>`).join('');
-  $('facChips').querySelectorAll('.fchip').forEach(b=>b.onclick=()=>{
-    const f=b.dataset.f; F.facs=F.facs.includes(f)?F.facs.filter(x=>x!==f):[...F.facs,f]; renderBrowse();
-  });
   const list = filteredListings();
   $('resCount').textContent = list.length + (list.length===1?' place':' places');
   $('browseGrid').innerHTML = list.map(cardHTML).join('');
@@ -492,9 +469,6 @@ function renderAll(){ renderHome(); renderBrowse(); if(curView==='saved') render
   $('funi').innerHTML = '<option value="">All universities</option>' + opts;
   $('fq').addEventListener('input',()=>{ F.q=$('fq').value.trim().toLowerCase(); renderBrowse(); });
   $('funi').addEventListener('input',()=>{ F.uni=$('funi').value; renderBrowse(); });
-  $('fprice').addEventListener('input',()=>{
-    F.maxPrice=+$('fprice').value; $('pval').textContent=(+$('fprice').value).toLocaleString('en-LK'); renderBrowse();
-  });
   LISTINGS.forEach(l=>{ const c=COORDS[l.id]; if(c){ l.lat=c[0]; l.lng=c[1]; } });
   renderAll();
   loadFeed();
