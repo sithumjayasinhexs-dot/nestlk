@@ -275,14 +275,28 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
 <script>
 /* ================= data ================= */
 const UNIS = [
-  {name:'University of Moratuwa', city:'Moratuwa'},
-  {name:'University of Colombo', city:'Colombo 03'},
+  {name:'University of Colombo', city:'Colombo'},
   {name:'University of Peradeniya', city:'Peradeniya'},
-  {name:'Univ. of Sri Jayewardenepura', city:'Nugegoda'},
+  {name:'University of Sri Jayewardenepura', city:'Nugegoda'},
   {name:'University of Kelaniya', city:'Kelaniya'},
+  {name:'University of Moratuwa', city:'Moratuwa'},
   {name:'University of Jaffna', city:'Jaffna'},
-  {name:'University of Ruhuna', city:'Galle'},
+  {name:'University of Ruhuna', city:'Matara'},
+  {name:'The Open University of Sri Lanka', city:'Nawala'},
+  {name:'Eastern University', city:'Batticaloa'},
+  {name:'South Eastern University', city:'Oluvil'},
+  {name:'Rajarata University', city:'Mihintale'},
+  {name:'Sabaragamuwa University', city:'Belihuloya'},
   {name:'Wayamba University', city:'Kuliyapitiya'},
+  {name:'Uva Wellassa University', city:'Badulla'},
+  {name:'University of the Visual & Performing Arts', city:'Colombo 07'},
+  {name:'Gampaha Wickramarachchi University', city:'Yakkala'},
+  {name:'University of Vavuniya', city:'Vavuniya'},
+  {name:'Buddhist and Pali University', city:'Homagama'},
+  {name:'Bhiksu University', city:'Anuradhapura'},
+  {name:'Kotelawala Defence University', city:'Ratmalana'},
+  {name:'Ocean University', city:'Tangalle'},
+  {name:'University of Vocational Technology', city:'Ratmalana'},
 ];
 const TYPES = ['Single room','Double sharing','Triple sharing','Annex','Boarding house'];
 const GENDERS = ['Boys','Girls','Any'];
@@ -298,7 +312,7 @@ let LISTINGS = [
   {id:1,title:'Sunny single room, 5-min walk to campus',uni:'University of Moratuwa',city:'Moratuwa',price:22000,type:'Single room',gender:'Boys',dist:'5 min walk',facs:['WiFi','Meals','Attached bathroom','Study table'],phone:'94771234567',days:1,featured:true,desc:'Quiet single room on the upper floor of a family house. Home-cooked meals included (breakfast + dinner). 5 minutes on foot to the main gate. Strictly for undergraduates.'},
   {id:2,title:"Girls' boarding house with meals",uni:'University of Colombo',city:'Bambalapitiya',price:28000,type:'Boarding house',gender:'Girls',dist:'10 min by bus',facs:['WiFi','Meals','CCTV','Hot water'],phone:'94774567890',days:2,featured:true,desc:'Well-managed boarding for 8 girls with a warden on premises. Three meals, laundry twice a week, CCTV in common areas. Close to Marine Drive.'},
   {id:3,title:'Furnished annex for two',uni:'University of Peradeniya',city:'Peradeniya',price:35000,type:'Annex',gender:'Any',dist:'7 min walk',facs:['Attached bathroom','Parking','Study table'],phone:'94777654321',days:3,featured:true,desc:'Separate 2-room annex with kitchenette and attached bathroom. Ideal for a pair of friends. Parking for a bike.'},
-  {id:4,title:'Budget double room for SJP students',uni:'Univ. of Sri Jayewardenepura',city:'Nugegoda',price:16000,type:'Double sharing',gender:'Boys',dist:'12 min walk',facs:['WiFi','Study table'],phone:'94712345678',days:1,desc:'Simple double room, two beds and study tables. Shared bathroom. Walking distance to the Wijerama entrance.'},
+  {id:4,title:'Budget double room for SJP students',uni:'University of Sri Jayewardenepura',city:'Nugegoda',price:16000,type:'Double sharing',gender:'Boys',dist:'12 min walk',facs:['WiFi','Study table'],phone:'94712345678',days:1,desc:'Simple double room, two beds and study tables. Shared bathroom. Walking distance to the Wijerama entrance.'},
   {id:5,title:'Modern studio annex with A/C',uni:'University of Kelaniya',city:'Kelaniya',price:30000,type:'Annex',gender:'Any',dist:'8 min walk',facs:['A/C','Attached bathroom','Parking','WiFi'],phone:'94763456789',days:5,desc:'Newly built studio with A/C, attached bathroom and small pantry. Separate entrance, very private.'},
   {id:6,title:'Room with meals near Jaffna campus',uni:'University of Jaffna',city:'Jaffna',price:14000,type:'Single room',gender:'Girls',dist:'6 min walk',facs:['Meals','WiFi'],phone:'94745678901',days:2,desc:'Homely single room with vegetarian meals. Safe neighbourhood, 6 minutes to the university.'},
   {id:7,title:'Boys boarding — hot water & wifi',uni:'University of Ruhuna',city:'Galle',price:18000,type:'Boarding house',gender:'Boys',dist:'15 min by bus',facs:['WiFi','Hot water','Study table'],phone:'94756789012',days:4,desc:'Clean boarding for 10 boys near the Galle bus stand. Hot water, wifi, and a quiet study hall.'},
