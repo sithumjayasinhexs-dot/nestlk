@@ -54,7 +54,7 @@ const CITY_MAP = [
   { k: ['badulla'], uni: 'Uva Wellassa University', lat: 6.989, lng: 81.055 },
   { k: ['belihuloya'], uni: 'Sabaragamuwa University', lat: 6.715, lng: 80.772 },
   { k: ['piliyandala'], uni: 'University of Moratuwa', lat: 6.801, lng: 79.922 },
-  { k: ['homagama'], uni: 'Buddhist and Pali University', lat: 6.844, lng: 79.997 },
+  { k: ['homagama'], uni: 'University of Sri Jayewardenepura', lat: 6.844, lng: 79.997 },
   { k: ['matara'], uni: 'University of Ruhuna', lat: 5.949, lng: 80.548 },
   { k: ['kurunegala'], uni: 'Wayamba University', lat: 7.481, lng: 80.361 },
 ];
