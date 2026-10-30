@@ -364,25 +364,31 @@ function cardHTML(l){
 
 /* ================= home ================= */
 function renderHome(){
-  $('uniChips').innerHTML = `<button class="uchip on" data-u="">All</button>` +
-    UNIS.map(u=>`<button class="uchip" data-u="${u.name}">${u.city}</button>`).join('');
+  $('uniChips').innerHTML = `<button class="uchip ${!F.uni?'on':''}" data-u="">All</button>` +
+    UNIS.map(u=>`<button class="uchip ${F.uni===u.name?'on':''}" data-u="${u.name}">${u.city}</button>`).join('');
   $('uniChips').querySelectorAll('.uchip').forEach(b=>b.onclick=()=>{
     $('uniChips').querySelectorAll('.uchip').forEach(x=>x.classList.remove('on'));
     b.classList.add('on');
-    F.uni = b.dataset.u; $('funi').value = F.uni;
+    F.uni = b.dataset.u; $('funi').value = F.uni; persistUni();
     $('locLabel').textContent = b.dataset.u ? UNIS.find(u=>u.name===b.dataset.u).city : 'All campuses';
     go('browse');
   });
-  $('featGrid').innerHTML = LISTINGS.filter(l=>l.featured).slice(0,3).map(cardHTML).join('');
-  $('freshGrid').innerHTML = LISTINGS.slice(0,3).map(cardHTML).join(''); // newest first — feed prepends
+  const pool = F.uni ? LISTINGS.filter(l=>l.uni===F.uni) : LISTINGS;
+  const feat = pool.filter(l=>l.featured);
+  $('featGrid').innerHTML = (feat.length ? feat : pool).slice(0,3).map(cardHTML).join('');
+  $('freshGrid').innerHTML = pool.slice(0,3).map(cardHTML).join(''); // newest first — feed prepends
 }
 function homeSearch(){
   F.uni = $('hq-uni').value;
-  $('funi').value = F.uni;
+  $('funi').value = F.uni; persistUni();
   go('browse');
 }
 /* ================= browse + filters ================= */
-const F = { q:'', uni:'', maxPrice:1000000000, type:'', gender:'', facs:[] };
+let storedUni = '';
+try { storedUni = localStorage.getItem('nestlkUni') || ''; } catch(e){}
+if (!UNIS.some(u=>u.name===storedUni)) storedUni = '';
+function persistUni(){ try { F.uni ? localStorage.setItem('nestlkUni', F.uni) : localStorage.removeItem('nestlkUni'); } catch(e){} }
+const F = { q:'', uni:storedUni, maxPrice:1000000000, type:'', gender:'', facs:[] };
 function filteredListings(){
   return LISTINGS.filter(l =>
     (!F.q || (l.title+' '+l.city+' '+l.uni).toLowerCase().includes(F.q)) &&
@@ -468,7 +474,11 @@ function renderAll(){ renderHome(); renderBrowse(); if(curView==='saved') render
   $('hq-uni').innerHTML = '<option value="">All universities</option>' + opts;
   $('funi').innerHTML = '<option value="">All universities</option>' + opts;
   $('fq').addEventListener('input',()=>{ F.q=$('fq').value.trim().toLowerCase(); renderBrowse(); });
-  $('funi').addEventListener('input',()=>{ F.uni=$('funi').value; renderBrowse(); });
+  $('funi').addEventListener('input',()=>{ F.uni=$('funi').value; persistUni(); renderAll(); });
+  if (F.uni) {
+    $('hq-uni').value = F.uni; $('funi').value = F.uni;
+    $('locLabel').textContent = UNIS.find(u=>u.name===F.uni).city;
+  }
   LISTINGS.forEach(l=>{ const c=COORDS[l.id]; if(c){ l.lat=c[0]; l.lng=c[1]; } });
   renderAll();
   loadFeed();
