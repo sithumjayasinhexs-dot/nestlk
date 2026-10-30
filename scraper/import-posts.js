@@ -36,6 +36,11 @@ const CITY_COORDS = {
   moratuwa: [6.773, 79.882], colombo: [6.927, 79.861], peradeniya: [7.260, 80.597],
   kandy: [7.291, 80.637], nugegoda: [6.872, 79.890], kelaniya: [6.955, 79.921],
   jaffna: [9.662, 80.026], galle: [6.054, 80.221], kuliyapitiya: [7.468, 80.040],
+  anuradhapura: [8.312, 80.403], badulla: [6.989, 81.055], belihuloya: [6.715, 80.772],
+  malabe: [6.907, 79.952], dehiwala: [6.851, 79.864], battaramulla: [6.898, 79.915],
+  kadawatha: [7.000, 79.950], makola: [6.972, 79.953], gampaha: [7.085, 79.993],
+  rajagiriya: [6.910, 79.894], piliyandala: [6.801, 79.922], homagama: [6.844, 79.997],
+  matara: [5.949, 80.548], kurunegala: [7.481, 80.361],
 };
 function coordsFor(city) {
   const t = (city || '').toLowerCase();

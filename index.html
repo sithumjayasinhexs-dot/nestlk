@@ -332,7 +332,7 @@ const COORDS = {
 
 /* ================= helpers ================= */
 const $ = id => document.getElementById(id);
-const fmtRs = n => 'Rs. ' + n.toLocaleString('en-LK');
+const fmtRs = n => n > 0 ? 'Rs. ' + n.toLocaleString('en-LK') : 'Call for price';
 const ago = d => d===0?'today':d===1?'yesterday':d+' days ago';
 const hcode = s => { let h=0; for (const c of String(s)) h=(h*31 + c.charCodeAt(0))|0; return Math.abs(h); };
 const grad = id => GRAD[hcode(id) % GRAD.length];
@@ -369,7 +369,7 @@ function cardHTML(l){
   return `<div class="card" onclick="openDetail('${l.id}')">
     <div class="ph"${hasPh(l)?'':' style="background:'+grad(l.id)+'"'}>${phInner}</div>
     <div class="cbody">
-      <div class="price">${fmtRs(l.price)} <small>/ month</small></div>
+      <div class="price">${fmtRs(l.price)}${l.price ? ' <small>/ month</small>' : ''}</div>
       <div class="ctitle">${l.title}</div>
       <div class="cmeta">📍 ${l.city} · 🚶 ${l.dist} · 🕒 ${ago(l.days)}</div>
       <div class="pills"><span class="pill">${l.type}</span>${l.facs.slice(0,2).map(f=>`<span class="pill g">${f}</span>`).join('')}</div>
@@ -427,7 +427,7 @@ function refreshMarkers(){
   $('mapCount').textContent = list.length + (list.length===1?' pin':' pins');
   list.forEach(l=>{
     const mk = L.marker([l.lat, l.lng]).addTo(map);
-    mk.bindPopup('<div class="map-pop"><b>'+fmtRs(l.price)+' / mo</b><br>'+l.title+
+    mk.bindPopup('<div class="map-pop"><b>'+(l.price ? fmtRs(l.price)+' / mo' : 'Call for price')+'</b><br>'+l.title+
       '<br><span style="color:#64748b;font-size:12px">📍 '+l.city+' · 🚶 '+l.dist+'</span>'+
       '<br><button onclick="openDetail('+l.id+')">View details</button></div>');
     markers.push(mk);
@@ -454,7 +454,7 @@ function renderBrowse(){
 /* ================= detail ================= */
 function openDetail(id){
   const l = LISTINGS.find(x=>x.id===id); if(!l) return;
-  const wa = 'https://wa.me/'+l.phone+'?text='+encodeURIComponent('Hi! I saw your "'+l.title+'" on NestLK ('+fmtRs(l.price)+'/month). Is it still available?');
+  const wa = 'https://wa.me/'+l.phone+'?text='+encodeURIComponent('Hi! I saw your "'+l.title+'" on NestLK ('+(l.price ? fmtRs(l.price)+'/month' : 'price on request')+'). Is it still available?');
   const dph = hasPh(l) ? galHTML(l,'dgal')
     : '<div class="dph" style="background:'+grad(l.id)+'"><span>'+emo(l.id)+'</span></div>';
   $('detailBody').innerHTML =
@@ -464,7 +464,7 @@ function openDetail(id){
         '<div class="pills"><span class="pill">'+l.type+'</span><span class="pill g">'+l.gender+'</span>'+(l.featured?'<span class="pill g">⭐ Featured</span>':'')+'</div>'+
         '<h2>'+l.title+'</h2>'+
         '<div class="cmeta">📍 '+l.city+' · near '+l.uni+' · 🚶 '+l.dist+' · 🕒 posted '+ago(l.days)+'</div>'+
-        '<div class="dprice">'+fmtRs(l.price)+' <small>/ month</small></div>'+
+        '<div class="dprice">'+fmtRs(l.price)+(l.price ? ' <small>/ month</small>' : '')+'</div>'+
         '<div class="drow"><b>Facilities</b><span class="facs">'+l.facs.map(f=>'<span class="fac">✓ '+f+'</span>').join('')+'</span></div>'+
         '<div class="contact">'+
           '<a class="btn wa" href="'+wa+'" target="_blank" rel="noopener">💬 WhatsApp</a>'+
