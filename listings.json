@@ -1,5 +1,53 @@
 [
  {
+  "id": "patpat-424421",
+  "title": "Room for Rent in Dehiwala",
+  "uni": "University of Sri Jayewardenepura",
+  "city": "Dehiwala",
+  "price": 25000,
+  "type": "Single room",
+  "gender": "Ladies",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94767277665",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-dehiwala-424421",
+  "lat": 6.8514,
+  "lng": 79.8707,
+  "desc": "Imported from patpat.lk — Girls' Boarding Place 3 Bellanthara Lane, Bellanthara Overview Fully furnished with beds, cupboards, and tables with chairs Water and electricity bills are equally divided among all girls Room attached bathroom 2 beds 2",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/E6hrt6u1HZgkV2aRBlGS6nnrJBaxex2TGWIiaMW5.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/UDz6u9m3QPevNlyCUUjiZRwKP9svWzePTivbp2gS.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/zMz3WH0qK3sEWU8dT3fRu3fqON1JyfCqGg5pCZEG.jpg"
+  ]
+ },
+ {
+  "id": "patpat-419743",
+  "title": "Room for Rent in Kurunegala",
+  "uni": "Wayamba University",
+  "city": "Kurunegala",
+  "price": 25000,
+  "type": "Single room",
+  "gender": "Ladies",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94718888283",
+  "days": 4,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-kurunegala-419743",
+  "lat": 7.4872,
+  "lng": 80.3641,
+  "desc": "Imported from patpat.lk — A comfortable boarding room is available for two girls on a shared basis at Rs. 25,000 per person per month, including meals. The room is suitable for Girls looking for a convenient and comfortable place to stay.",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/N7OkGuTfeSR7TtrP5urrcBqFpuFYKqfQdGTDXVAO.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/KqGVQEayhj01N7Xl4jQxEtUqlVbwWJiTL3zzzHsa.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/jpYkQAHurIU03LyK2YGGeV0yvXCUf2oKXY2Bsso9.jpg"
+  ]
+ },
+ {
   "id": "fbpost-1175616184775804",
   "title": "Safe girls' boarding near Uva Wellassa University",
   "uni": "Uva Wellassa University",
