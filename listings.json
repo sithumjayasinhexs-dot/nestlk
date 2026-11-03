@@ -1,5 +1,47 @@
 [
  {
+  "id": "patpat-426502",
+  "title": "Room for Rent in Bellanwila",
+  "uni": "University of Sri Jayewardenepura",
+  "city": "Bellanwila",
+  "price": 20000,
+  "type": "Boarding",
+  "gender": "Ladies",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94772830954",
+  "days": 1,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-bellanwila-426502",
+  "lat": 6.8448,
+  "lng": 79.8774,
+  "desc": "Imported from patpat.lk — GIRLS' BOARDING PLACE - BELLANWILA Opposite Bellanwila Raja Maha Viharaya GROUND FLOOR Fully Furnished Rooms Attached Bathrooms 2 Girls per Room Rs. 25,000 per girl 2 Rooms Available 3 Girls per Room Rs. 20,000 per girl",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/xdjDM0YlAzCOiFHiK2ojDPMfb9NMMJ8pBRwMpuuD.jpg"
+  ]
+ },
+ {
+  "id": "patpat-426491",
+  "title": "Room for Rent in Rajagiriya",
+  "uni": "University of Colombo",
+  "city": "Rajagiriya",
+  "price": 8000,
+  "type": "Boarding",
+  "gender": "Gents",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94761061089",
+  "days": 1,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-rajagiriya-426491",
+  "lat": 6.9094,
+  "lng": 79.8877,
+  "desc": "Imported from patpat.lk — A shared room for a boy is available on the second floor of a partially completed house. Please note that this is not a luxry place. One bed is available for a boy in a three bed shared room, ideally located very close",
+  "photos": []
+ },
+ {
   "id": "patpat-426433",
   "title": "Room for Rent in Homagama",
   "uni": "",
