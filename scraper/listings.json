@@ -1,5 +1,52 @@
 [
  {
+  "id": "patpat-427673",
+  "title": "Room for Rent in Dehiwala",
+  "uni": "University of Sri Jayewardenepura",
+  "city": "Dehiwala",
+  "price": 25000,
+  "type": "Single room",
+  "gender": "Ladies",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94772084637",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-dehiwala-427673",
+  "lat": 6.8522,
+  "lng": 79.8701,
+  "desc": "Imported from patpat.lk — Room for Rent – Hill Street, Dehiwala (Females Only) A room with one bedroom and one bathroom is available for rent at Hill Street, Dehiwala, conveniently located near Sampath Bank. Location: Hill Street, Dehiwala.",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/9HZDWLraHuCsVPUYz8qe0GszPvp5OfFKqvgkJZx9.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/PImIVKJUd66S8KYz4aOUYsRzYJSdwvXyMFTVrbvV.jpg"
+  ]
+ },
+ {
+  "id": "patpat-427526",
+  "title": "Partition for Rent in Battaramulla",
+  "uni": "University of Sri Jayewardenepura",
+  "city": "Battaramulla",
+  "price": 15000,
+  "type": "Single room",
+  "gender": "Ladies",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94775342660",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/partition-for-rent-in-battaramulla-427526",
+  "lat": 6.9064,
+  "lng": 79.9172,
+  "desc": "Imported from patpat.lk — Sharing කාමරයක් ගැහැණු ලමුන් සදහා. Advance 5000/= මාසික කුලිය ලයිට්,වතුර, ගෑස් ලිප සමග 15,000/=",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/fOsFik5DDEDMGYyEWodkbA35eXmAvbvAd2aB1HRG.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/D4pVXxmrB48JigXjRw6Ijzh4dFoTGMhYl4ccfqjL.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/D2baNvKKJO57hkQDpvXJXGY7inHQKgipa2AbbIln.jpg"
+  ]
+ },
+ {
   "id": "patpat-426980",
   "title": "Room for Rent in Narahenpita (Colombo 05)",
   "uni": "University of Colombo",
