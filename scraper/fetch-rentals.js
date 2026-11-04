@@ -50,7 +50,7 @@ const CITY_MAP = [
   { k: ['kadawatha'], uni: 'University of Kelaniya', lat: 7.000, lng: 79.950 },
   { k: ['kiribathgoda'], uni: 'University of Kelaniya', lat: 6.979, lng: 79.930 },
   { k: ['makola'], uni: 'University of Kelaniya', lat: 6.972, lng: 79.953 },
-  { k: ['gampaha'], uni: 'Gampaha Wickramarachchi University', lat: 7.085, lng: 79.993 },
+  { k: ['gampaha'], uni: 'University of Kelaniya', lat: 7.085, lng: 79.993 },
   { k: ['badulla'], uni: 'Uva Wellassa University', lat: 6.989, lng: 81.055 },
   { k: ['belihuloya'], uni: 'Sabaragamuwa University', lat: 6.715, lng: 80.772 },
   { k: ['piliyandala'], uni: 'University of Moratuwa', lat: 6.801, lng: 79.922 },
