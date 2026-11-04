@@ -225,9 +225,9 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
 
   <div class="view" id="v-map">
     <div class="sec">
-      <div class="sec-head"><h2>🗺️ Places on the map</h2><span class="count" id="mapCount"></span></div>
+      <div class="sec-head"><h2>🗺️ Universities on the map</h2><span class="count" id="mapCount"></span></div>
       <div id="map"></div>
-      <p class="map-note">Pins follow your current Search filters — filter the list, then check the map. Tap a pin for price &amp; details.</p>
+      <p class="map-note">Pins show university locations only. Tap a university pin to see the places near that campus.</p>
       <div class="map-fallback" id="mapFallback" style="display:none">
         <div class="big" style="font-size:48px">🛰️</div>
         <h3>Map needs internet</h3><p>Connect to load the Sri Lanka map tiles.</p>
@@ -409,19 +409,48 @@ function showMap(){
   }
   setTimeout(()=>{ map.invalidateSize(); refreshMarkers(); }, 150);
 }
+const UNI_SPOTS = {
+  'University of Colombo':[6.9006,79.8597],
+  'University of Peradeniya':[7.2583,80.5975],
+  'University of Sri Jayewardenepura':[6.8513,79.9036],
+  'University of Kelaniya':[6.9731,79.9155],
+  'University of Moratuwa':[6.7952,79.8777],
+  'University of Jaffna':[9.6856,80.0220],
+  'University of Ruhuna':[5.9416,80.5770],
+  'The Open University of Sri Lanka':[6.8839,79.8867],
+  'Eastern University':[7.7170,81.7000],
+  'South Eastern University':[7.2797,81.8550],
+  'Rajarata University':[8.4528,80.5012],
+  'Sabaragamuwa University':[6.7138,80.7880],
+  'Wayamba University':[7.4677,80.0373],
+  'Uva Wellassa University':[6.9820,81.0780],
+  'University of the Visual & Performing Arts':[6.9110,79.8600],
+  'University of Vavuniya':[8.7350,80.5110],
+  'Ocean University':[6.0240,80.8780],
+  'University of Vocational Technology':[6.8180,79.8690]
+};
+function mapPickUni(name){
+  F.uni = name;
+  $('funi').value = name;
+  const hq = $('hq-uni'); if(hq) hq.value = name;
+  persistUni(); renderAll(); go('browse');
+}
 function refreshMarkers(){
   if(!map) return;
   markers.forEach(m=>map.removeLayer(m)); markers=[];
-  const list = filteredListings().filter(l=>l.lat!=null);
-  $('mapCount').textContent = list.length + (list.length===1?' pin':' pins');
-  list.forEach(l=>{
-    const mk = L.marker([l.lat, l.lng]).addTo(map);
-    mk.bindPopup('<div class="map-pop"><b>'+(l.price ? fmtRs(l.price)+' / mo' : 'Call for price')+'</b><br>'+l.title+
-      '<br><span style="color:#64748b;font-size:12px">📍 '+l.city+' · 🚶 '+l.dist+'</span>'+
-      '<br><button onclick="openDetail('+l.id+')">View details</button></div>');
+  let n = 0;
+  UNIS.forEach(u=>{
+    const c = UNI_SPOTS[u.name]; if(!c) return;
+    n++;
+    const cnt = LISTINGS.filter(l=>l.uni===u.name).length;
+    const mk = L.marker(c).addTo(map);
+    mk.bindPopup('<div class="map-pop"><b>'+u.name+'</b>'+
+      '<br><span style="color:#64748b;font-size:12px">📍 '+u.city+' · '+cnt+(cnt===1?' place':' places')+' near this campus</span>'+
+      (cnt ? '<br><button onclick="mapPickUni(\''+u.name+'\')">See places</button>' : '')+'</div>');
     markers.push(mk);
   });
-  if(list.length) map.fitBounds(L.latLngBounds(list.map(l=>[l.lat,l.lng])).pad(0.25));
+  $('mapCount').textContent = n + ' universities';
+  if(F.uni && UNI_SPOTS[F.uni]) map.setView(UNI_SPOTS[F.uni], 11);
 }
 function renderBrowse(){
   const list = filteredListings();
