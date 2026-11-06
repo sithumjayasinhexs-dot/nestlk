@@ -1,5 +1,77 @@
 [
  {
+  "id": "patpat-430139",
+  "title": "Room for Rent in Kalubowila",
+  "uni": "University of Sri Jayewardenepura",
+  "city": "Kalubowila",
+  "price": 12000,
+  "type": "Single room",
+  "gender": "Ladies",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94772084637",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-kalubowila-430139",
+  "lat": 6.8546,
+  "lng": 79.8683,
+  "desc": "Imported from patpat.lk — Furnished Sharing Room for Girls – Kalubowila A furnished sharing room is available for girls on Hospital Road, Kalubowila, in a convenient residential location. Property Details: Location: Hospital Road, Kalubowila 1",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/hVMS1a1Z6NnC1hPF100RrHTfadvId4HqDlw6T327.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/lX0BalyHgOKu17TUA0nZARJMmnBSvsUWzLjK1DID.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/0LO0MVdLMuWIlWlSnBsh6aDPSfjp4bFiO7MpZham.jpg"
+  ]
+ },
+ {
+  "id": "patpat-429789",
+  "title": "Annex for Rent in Dehiwala",
+  "uni": "University of Sri Jayewardenepura",
+  "city": "Dehiwala",
+  "price": 30000,
+  "type": "Annex",
+  "gender": "Any",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94772084637",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/annex-for-rent-in-dehiwala-429789",
+  "lat": 6.8546,
+  "lng": 79.8683,
+  "desc": "Imported from patpat.lk — 1-Bedroom Annex for Rent – Galle Road, Dehiwala A convenient single-bedroom annex available for rent in a prime location along Galle Road, Dehiwala. Ideal for individuals or couples looking for a comfortable living",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/xLMsAfMdhfJZwgKvFI1DvZTXPHu8Wy4Kb9K70eed.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/hiPQoYZur6R8Dj2DHpWssaodlPMCSuvBBcwpdc0v.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/qA3cIQXqezZnlroKsPNvhFH2w4f8evwayzzTzKRk.jpg"
+  ]
+ },
+ {
+  "id": "patpat-429587",
+  "title": "Room for Rent in Borella (Colombo 08)",
+  "uni": "University of Colombo",
+  "city": "Borella (Colombo 08)",
+  "price": 60000,
+  "type": "Boarding",
+  "gender": "Any",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94750882703",
+  "days": 1,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-borella-colombo-08-429587",
+  "lat": 6.9298,
+  "lng": 79.8589,
+  "desc": "Imported from patpat.lk — බොරැල්ලේ කොටාපාරේ රුහුණු කලා මාවතේ කණ්ඩායමකට(6දෙනෙකුට )කාමරයක් කුලියට දීමට ඇත. ප්‍රධාන පාරට ම මීටර 200කි. බොරැල්ල හන්දියට ඇවිද යන දුර. 144,170,175,190,174,171 බස් පාර. ඇඳන් හයකි, මෙට්ට හයකි, ෆෑන්, මේස, පුටු සහිතයි.",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/4iUkxbfkOc2wsXXiLpWVI4AvENnD9WcrCJFN1nlF.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/8y80h4qvsxENKoDhfqnUWfhyLVlz9Xkdd4mXikm4.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/VqBqQ9uw5rAantvvlQCifQHiqyYkaYiMc5q5mtHm.jpg"
+  ]
+ },
+ {
   "id": "patpat-429505",
   "title": "Room for Rent in Dehiwala",
   "uni": "University of Sri Jayewardenepura",
