@@ -467,7 +467,8 @@ function renderBrowse(){
 /* ================= detail ================= */
 function openDetail(id){
   const l = LISTINGS.find(x=>x.id===id); if(!l) return;
-  const wa = 'https://wa.me/'+l.phone+'?text='+encodeURIComponent('Hi! I saw your "'+l.title+'" on NestLK ('+(l.price ? fmtRs(l.price)+'/month' : 'price on request')+'). Is it still available?');
+  const digits = String(l.phone||'').replace(/\D/g,'');
+  const wa = 'https://wa.me/'+digits+'?text='+encodeURIComponent('Hi! I saw your "'+l.title+'" on NestLK ('+(l.price ? fmtRs(l.price)+'/month' : 'price on request')+'). Is it still available?');
   const dph = hasPh(l) ? galHTML(l,'dgal')
     : '<div class="dph" style="background:'+grad(l.id)+'"><span>'+emo(l.id)+'</span></div>';
   $('detailBody').innerHTML =
@@ -481,7 +482,7 @@ function openDetail(id){
         '<div class="drow"><b>Facilities</b><span class="facs">'+l.facs.map(f=>'<span class="fac">✓ '+f+'</span>').join('')+'</span></div>'+
         '<div class="contact">'+
           '<a class="btn wa" href="'+wa+'" target="_blank" rel="noopener">💬 WhatsApp</a>'+
-          '<a class="btn teal" href="tel:+'+l.phone+'">📞 Call</a>'+
+          '<a class="btn teal" href="tel:+'+digits+'">📞 Call</a>'+
           '<button class="btn ghost" onclick="toggleFav(\''+l.id+'\',event)">'+(favs.has(l.id)?'❤️ Saved':'🤍 Save')+'</button>'+
         '</div>'+
         '<div class="reveal" id="revealBox"><button class="btn ghost" onclick="showPhone(\''+l.id+'\')">👁️ Show contact number</button></div>'+
