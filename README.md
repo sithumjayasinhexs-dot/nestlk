@@ -22,3 +22,7 @@ houses, direct from owners. No brokers.
 - `scraper/import-posts.js` — paste Facebook group posts as text → `listings.json`
 - The app fetches `listings.json` on load and merges new entries automatically,
   falling back to built-in samples when offline.
+
+## Changelog
+
+- 2026-11-06 — Listing detail: added a "Show contact number" reveal button (number + copy) under the WhatsApp/Call row.
