@@ -114,6 +114,11 @@ html,body{overflow-x:clip;overscroll-behavior-y:none}
     padding:7px 14px;border-radius:999px}
   .contact{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
   .contact .btn{flex:1;text-align:center;text-decoration:none;display:inline-block}
+  .reveal{margin-top:10px}
+  .reveal .btn{width:100%}
+  .phnum{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#eef2f1;border-radius:12px;padding:10px 10px 10px 16px}
+  .phnum b{font-size:21px;letter-spacing:.5px}
+  .phnum .btn{flex:0 0 auto;padding:9px 16px;font-size:13px;width:auto}
   .wa{background:#1faa55;color:#fff}
   .wa:hover{background:#178a44}
   .desc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;margin-top:20px}
@@ -479,11 +484,29 @@ function openDetail(id){
           '<a class="btn teal" href="tel:+'+l.phone+'">📞 Call</a>'+
           '<button class="btn ghost" onclick="toggleFav(\''+l.id+'\',event)">'+(favs.has(l.id)?'❤️ Saved':'🤍 Save')+'</button>'+
         '</div>'+
+        '<div class="reveal" id="revealBox"><button class="btn ghost" onclick="showPhone(\''+l.id+'\')">👁️ Show contact number</button></div>'+
         '<p style="font-size:12px;color:var(--mut);margin-top:12px">🛡️ Safety tip: always visit the place before paying any advance.</p>'+
       '</div>'+
     '</div>'+
     '<div class="desc"><h3>About this place</h3><p>'+l.desc+'</p></div>';
   go('detail');
+}
+
+function showPhone(id){
+  const l = LISTINGS.find(x=>x.id===id); if(!l) return;
+  const d = String(l.phone||'').replace(/\D/g,'');
+  const local = d.startsWith('94') ? '0'+d.slice(2) : d;
+  const pretty = local.replace(/(\d{3})(\d{3})(\d{4})$/,'$1 $2 $3');
+  $('revealBox').innerHTML = '<div class="phnum"><b>📱 '+pretty+'</b><button class="btn teal" onclick="copyPhone(this,\''+local+'\')">📋 Copy</button></div>';
+}
+function copyPhone(btn,n){
+  const done=()=>{ btn.textContent='✓ Copied'; setTimeout(()=>{btn.textContent='📋 Copy';},1600); };
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(n).then(done).catch(()=>{ fallbackCopy(n); done(); }); }
+  else { fallbackCopy(n); done(); }
+}
+function fallbackCopy(t){
+  const ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} ta.remove();
 }
 
 /* ================= saved ================= */
