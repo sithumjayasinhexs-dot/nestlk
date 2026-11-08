@@ -1,5 +1,29 @@
 [
  {
+  "id": "patpat-430783",
+  "title": "Room for Rent in Mount Lavinia",
+  "uni": "University of Sri Jayewardenepura",
+  "city": "Mount Lavinia",
+  "price": 25000,
+  "type": "Single room",
+  "gender": "Any",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94772084637",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-mount-lavinia-430783",
+  "lat": 6.8522,
+  "lng": 79.8701,
+  "desc": "Imported from patpat.lk — 3 months advance half month broker fee needed 100 meter to gall road with Fuinich",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/d9nMC4vlIudN0U5wSWD4aj8mHSZd1MDneaRpCkW6.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/TqEA6oHlCvb7qhIQRSZ51BtN5Q1RKJf2stI7iEYB.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/uhRohdkyrSksUhLOz9S3KDAvvUJA6y0Fl6SF6oi1.jpg"
+  ]
+ },
+ {
   "id": "patpat-430723",
   "title": "Room for Rent in Maharagama",
   "uni": "University of Sri Jayewardenepura",
