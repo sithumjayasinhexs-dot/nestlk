@@ -1,5 +1,75 @@
 [
  {
+  "id": "patpat-431328",
+  "title": "Room for Rent in Moratuwa",
+  "uni": "University of Moratuwa",
+  "city": "Moratuwa",
+  "price": 9500,
+  "type": "Boarding",
+  "gender": "Any",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94766740538",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-moratuwa-431328",
+  "lat": 6.7762,
+  "lng": 79.8796,
+  "desc": "Imported from patpat.lk — 2 Rooms Kitchen Please contact for the details",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/BbWBsIcLIn5EQ7oRHE3EVAEvJfIMh7pPJKc08o4G.jpg"
+  ]
+ },
+ {
+  "id": "patpat-431270",
+  "title": "Room for Rent in Battaramulla",
+  "uni": "Univ. of Sri Jayewardenepura",
+  "city": "Battaramulla",
+  "price": 22000,
+  "type": "Single room",
+  "gender": "Any",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94714311080",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-battaramulla-431270",
+  "lat": 6.904,
+  "lng": 79.919,
+  "desc": "Imported from patpat.lk — 1.5 km to Battaramulla, Koswata room for Rent. separate entrance, Attached Bathroom",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/hyZTU1WNS0c8tx2lljZhGicu8EzkPfjU6ZwalCT2.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/7JsektzvlZGtaaujtshag7sMPch0CuMizlLwKX6Q.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/dKj9VGzTUetNe4jvjjpzKUDTmkKs6cG6OAFiqunE.jpg"
+  ]
+ },
+ {
+  "id": "patpat-277838",
+  "title": "Room for Rent in Kadawatha",
+  "uni": "University of Kelaniya",
+  "city": "Kadawatha",
+  "price": 35000,
+  "type": "Single room",
+  "gender": "Ladies",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94760769398",
+  "days": 1,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-kadawatha-277838",
+  "lat": 7.0022,
+  "lng": 79.9456,
+  "desc": "Imported from patpat.lk — කාන්තාවක් සදහා සුවපහසු ආරක්ෂිත නවාතැන් පහසුකම් කඩවත ඉහල කරගහමුණ පාසල් මාවත කොළඹ නුවර බස් පාරට 1.6Km Highway Bus Stand 1.4Km තනි කාමරය Bathroom - දෙදෙනෙකු සදහා 1ක් ඇත සාලය මුලුතැන්ගෙය දෙදෙනෙකු",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/qlW2UUrHUMmikLZJI41jAPz2tyvo1yjT3FFOqS4Y.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/c1E37e3RC3R62ezeGkEEtpAmx8I3u0kmOUgj5GEP.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/fW1IYE4WQ9nj0d3MjNSLJquYrV1k98iqAySNNEGW.jpg"
+  ]
+ },
+ {
   "id": "patpat-430984",
   "title": "Annex for Rent in Kadawatha",
   "uni": "University of Kelaniya",
