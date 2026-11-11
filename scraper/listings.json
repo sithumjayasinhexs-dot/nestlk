@@ -1,5 +1,27 @@
 [
  {
+  "id": "patpat-433197",
+  "title": "Room for Rent in Boralesgamuwa",
+  "uni": "",
+  "city": "Boralesgamuwa",
+  "price": 25000,
+  "type": "Single room",
+  "gender": "Any",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94777891685",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-boralesgamuwa-433197",
+  "lat": 6.8484,
+  "lng": 79.8742,
+  "desc": "Imported from patpat.lk — Room for rent in Boralesgamuwa",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/DJx5KQbmYdhPa7XOXaEPi2rLze2t5IvAOHdju1tU.jpg"
+  ]
+ },
+ {
   "id": "patpat-432974",
   "title": "Room for Rent in Ratmalana",
   "uni": "University of Moratuwa",
