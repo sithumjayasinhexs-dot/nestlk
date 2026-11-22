@@ -1,5 +1,51 @@
 [
  {
+  "id": "patpat-442517",
+  "title": "Room for Rent in Wattala",
+  "uni": "University of Kelaniya",
+  "city": "Wattala",
+  "price": 20000,
+  "type": "Boarding",
+  "gender": "Ladies",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94755343994",
+  "days": 0,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-wattala-442517",
+  "lat": 6.9898,
+  "lng": 79.8899,
+  "desc": "Imported from patpat.lk — ගැහැණු ළමුන් සඳහා කාමර කුලියට දීමට ඇත – පරණකන්ද, වත්තල. රැකියාවල නියුතු යුවතියන් සඳහා ඉතාමත් සාමකාමී සහ ආරක්ෂිත පරිසරයක පිහිටි කාමර දෙකක් කුලියට දීමට ඇත. පහසුකම්: නාන කාමරය සහ පොදු මුළුතැන්ගෙය.",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/iY8YdaH8oAkIwv0N5aIKU7g3PHNUUS17ybjAIkHh.png"
+  ]
+ },
+ {
+  "id": "patpat-442421",
+  "title": "Room for Rent in Piliyandala",
+  "uni": "University of Moratuwa",
+  "city": "Piliyandala",
+  "price": 6500,
+  "type": "Single room",
+  "gender": "Gents",
+  "dist": "see ad",
+  "facs": [],
+  "phone": "+94771174925",
+  "days": 1,
+  "featured": false,
+  "source": "patpat.lk",
+  "url": "https://patpat.lk/en/ad/property/room-for-rent-in-piliyandala-442421",
+  "lat": 6.8024,
+  "lng": 79.9217,
+  "desc": "Imported from patpat.lk — sharing rooms available for boys in Piliyandala. Closs to 255 Bus route 3 in 1 sharing room. semi furniture, fully tiled, upstaire room, separate entrance, easy to reach Maharagama, Kottawa,",
+  "photos": [
+   "https://cdn.patpat.lk/listing-media-files/uploads/bFLmMgEzpt2uOmocWQNT9MOqBXQRstwDOEb6LT77.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/Af9dJJB702roo4yeg5citN9skWLfIAioe2LTK2eA.jpg",
+   "https://cdn.patpat.lk/listing-media-files/uploads/NNRp9pIbJucQEeYpeF6HTrIpdqGSCKk5pZhTBQVY.jpg"
+  ]
+ },
+ {
   "id": "ikman-L2VuL2FkL3Nl",
   "title": "Semi Furnished Boarding Room For Rent In Eldeniya Kadawatha",
   "uni": "University of Kelaniya",
@@ -3395,22 +3441,24 @@
  },
  {
   "id": "fbpost-1364383472565740",
-  "title": "Student accommodation near Uva Wellassa, Badulla",
+  "title": "Boarding for Uva Wellassa girls — Passara Road, Badulla",
   "uni": "Uva Wellassa University",
   "city": "Badulla",
-  "price": 0,
+  "price": 4300,
   "type": "Boarding",
-  "gender": "Any",
+  "gender": "Girls",
   "dist": "see ad",
-  "facs": [],
+  "facs": [
+   "Kitchen"
+  ],
   "phone": "0714755270",
-  "days": 76,
+  "days": 2,
   "featured": false,
   "source": "facebook",
   "url": "https://facebook.com/groups/444559517881478/permalink/1364383472565740/",
   "lat": 6.985,
   "lng": 81.058,
-  "desc": "From Facebook — accommodation for Uva Wellassa students with cooking facilities. Price not stated in the post — call to confirm. Also: 0716341955.",
+  "desc": "From Facebook — boarding for 15 Uva Wellassa girls, Passara Road Badulla (near Udawela school, ~80m off the road). Cooking allowed. Rs 4,300/person/mo; 2-bed 8,600, 3-bed 12,900, 4-bed 17,200, 6-bed 24,000.",
   "photos": []
  },
  {
